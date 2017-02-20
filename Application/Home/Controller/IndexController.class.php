@@ -19,6 +19,9 @@ class IndexController extends HomeController {
 	//系统首页
     public function index(){
 
+//        $Mall = M('mall','ngc_');
+//        var_dump($Mall);
+
         $category = D('Category')->getTree();
         $lists    = D('Document')->lists(null);
 
