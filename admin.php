@@ -22,6 +22,11 @@ define('BIND_MODULE','Admin');
  */
 define ( 'APP_PATH', './Application/' );
 
+/**
+ * 当前时间
+ */
+define ( 'NOW_TIME', time());
+
 if(!is_file(APP_PATH . 'User/Conf/config.php')){
 	header('Location: ./install.php');
 	exit;
