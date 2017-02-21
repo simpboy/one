@@ -9,15 +9,14 @@
 	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
 	<div class="main-title cf">
 		<h2>
-			<a href="{:U('article/index','cate_id='.$nav['id'])}">添加电商</a>
+			<a href="{:U('mall/add_page')}">添加电商</a>
 		</h2>
 	</div>
 	<!-- 标签页导航 -->
 <div class="tab-wrap">
 	<ul class="tab-nav nav">
-		<volist name=":parse_config_attr($model['field_group'])" id="group">
-			<li data-tab="tab{$key}" <eq name="key" value="1">class="current"</eq>><a href="javascript:void(0);">{$group}</a></li>
-		</volist>
+        <li class="current"><a href="{:U('mall/add_page')}">添加电商</a></li>
+        <li ><a href="{:U('mall/index')}">电商列表</a></li>
 	</ul>
 	<div class="tab-content">
 	<!-- 表单 -->
@@ -82,60 +81,6 @@ $(function(){
         autoclose:true
     });
     showTab();
-
-	<if condition="C('OPEN_DRAFTBOX') and (ACTION_NAME eq 'add' or $info['status'] eq 3)">
-	//保存草稿
-	var interval;
-	$('#autoSave').click(function(){
-        var target_form = $(this).attr('target-form');
-        var target = $(this).attr('url')
-        var form = $('.'+target_form);
-        var query = form.serialize();
-        var that = this;
-
-        $(that).addClass('disabled').attr('autocomplete','off').prop('disabled',true);
-        $.post(target,query).success(function(data){
-            if (data.status==1) {
-                updateAlert(data.info ,'alert-success');
-                $('input[name=id]').val(data.data.id);
-            }else{
-                updateAlert(data.info);
-            }
-            setTimeout(function(){
-                $('#top-alert').find('button').click();
-                $(that).removeClass('disabled').prop('disabled',false);
-            },1500);
-        })
-
-        //重新开始定时器
-        clearInterval(interval);
-        autoSaveDraft();
-        return false;
-    });
-
-	//Ctrl+S保存草稿
-	$('body').keydown(function(e){
-		if(e.ctrlKey && e.which == 83){
-			$('#autoSave').click();
-			return false;
-		}
-	});
-
-	//每隔一段时间保存草稿
-	function autoSaveDraft(){
-		interval = setInterval(function(){
-			//只有基础信息填写了，才会触发
-			var title = $('input[name=title]').val();
-			var name = $('input[name=name]').val();
-			var des = $('textarea[name=description]').val();
-			if(title != '' || name != '' || des != ''){
-				$('#autoSave').click();
-			}
-		}, 1000*parseInt({:C('DRAFT_AOTOSAVE_INTERVAL')}));
-	}
-	autoSaveDraft();
-	</if>
-
 });
 </script>
 </block>

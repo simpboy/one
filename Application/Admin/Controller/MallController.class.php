@@ -58,7 +58,10 @@ class MallController extends AdminController {
      * 列表页
      */
     public function index(){
-        $this->meta_title = '管理首页';
+        $Mall = M('mall','ngc_');
+
+
+        $this->meta_title = '电商列表';
         $this->display();
     }
 
