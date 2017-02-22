@@ -16,6 +16,7 @@ return array(
     'DATA_CACHE_PREFIX'    => 'onethink_', // 缓存前缀
     'DATA_CACHE_TYPE'      => 'File', // 数据缓存类型
     'URL_MODEL'            => 3, //URL模式
+    'DOMAIN'               => 'http://one.loca/',
 
     /* 文件上传相关配置 */
     'DOWNLOAD_UPLOAD' => array(

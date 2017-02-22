@@ -19,6 +19,16 @@ class MallController extends AdminController {
             $address = I("post.address",'','trim');
             $expire_time = I("post.expire_time",0,'trim');
             $mall_id = I("post.id",null,'intval');
+            $img_old = I("post.img_old",null,'trim');
+
+            $Up 			= D('Admin/Up');
+            $logo_info 		= $Up->save_img();
+            if(!empty($logo_info)){
+                $domain = C('DOMAIN')?C('DOMAIN'):'http://admin.one.loca/';
+                $img  = $domain.$logo_info[0];
+            }elseif(!empty($img_old)){
+                $img  = $img_old;
+            }
 
             if(empty($mall_name)){
                 $this->error("请填写电商名称");
@@ -36,7 +46,8 @@ class MallController extends AdminController {
                 'name'          => $mall_name,
                 'desc'          => $mall_desc,
                 'address'       => $address,
-                'expire_time'   => $expire_time
+                'expire_time'   => $expire_time,
+                'img'           => $img
             ];
             //后台可以修改电商名称，前台不可以，店商名称不能与其他电商重名，需要增加电商的地址字段
             if(empty($mall_id)){

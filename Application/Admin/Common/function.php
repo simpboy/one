@@ -428,3 +428,46 @@ function get_action_type($type, $all = false){
     }
     return $list[$type];
 }
+
+/**
+ * 调试函数，将变量追加输出的到文件中，默认/data/runtime/debug.txt
+ * @param string $data 要输出的内容
+ * @param string $tag  输出的标记
+ * @param boolean $append true追加，false重写
+ * @param string $file_path  输出路径 默认--> /data/runtime/debug.txt
+ * @author wangxl
+ */
+function debug_output($data="",$tag="",$debug=true,$append=true,$call_back='json_encode',$file_path=''){
+    if($debug!=true&&empty($file_path)){
+        $file_path = RUNTIME_PATH.'Logs/log.txt';
+    }
+    if(empty($file_path)){
+        $file_path = RUNTIME_PATH.'Logs/debug.txt';
+    }
+    $type = is_object($data)?'object':(is_null($data)?'null':(is_array($data)?'array':(is_resource($data)?'resource':'others')));
+    $mode = $append?'a+':'w+';
+    $fp = fopen($file_path,$mode);
+    if($debug){
+        $data = print_r($data,true);
+        $output_data = date("Y-m-d H:i:s",time());
+        $tag = empty($tag)?'new-var':$tag;
+        $output_data .= '-->tag:'.$tag;
+        $output_data .= '-->type:'.$type.'-->content:'.$data."\n\n";
+    }else{
+        if(!empty($call_back)){
+            $output_data = call_user_func($call_back,$data);
+        }else{
+            $output_data = $data;
+        }
+    }
+    fwrite($fp,$output_data,strlen($output_data));
+    fclose($fp);
+}
+
+/**
+ * debug_output别名函数
+ * @author wangxl
+ */
+function output($data="",$tag="",$debug=true,$append=true,$call_back='json_encode',$file_path=''){
+    debug_output($data,$tag,$debug,$append,$call_back='json_encode',$file_path);
+}

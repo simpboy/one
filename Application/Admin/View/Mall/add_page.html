@@ -20,7 +20,7 @@
 	</ul>
 	<div class="tab-content">
 	<!-- 表单 -->
-	<form id="form" action="{:U('Mall/add_page')}" method="post" class="form-horizontal">
+	<form id="form" action="{:U('Mall/add_page')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
         <div class="form-item cf">
             <div class="controls">
                 <label class="item-label">名称:<span class="check-tips"></span></label>
@@ -31,6 +31,13 @@
             <div class="controls">
                 <label class="item-label">描述:<span class="check-tips"></span></label>
                 <textarea class="textarea input-large" name="desc" ></textarea>
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">图片:<span class="check-tips"></span></label>
+                <input type="file" name="img"/>
+                <input class="input" style="" type="file" name="logo"/>
             </div>
         </div>
         <div class="form-item cf">
@@ -47,7 +54,7 @@
         </div>
 
 		<div class="form-item cf">
-			<button class="btn submit-btn ajax-post hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+			<button class="btn submit-btn hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
 			<a class="btn btn-return" href="{:U('article/index?cate_id='.$cate_id)}">返 回</a>
 		</div>
 	</form>
