@@ -35,6 +35,7 @@ class UpModel extends Model
     public function editor_upload($action){
         $uploadpath = C('PICTURE_UPLOAD');
         $uploadpath = $uploadpath['rootPath'];
+        debug_output($uploadpath);
         $config_string = '/* 前后端通信相关的配置,注释只允许使用多行方式 */
 {
     /* 上传图片配置项 */

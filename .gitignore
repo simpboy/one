@@ -2,3 +2,6 @@
 .idea/
 Runtime/
 Uploads/
+.buildpath
+.project
+.settings/

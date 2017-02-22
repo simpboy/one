@@ -24,39 +24,47 @@
         <div class="form-item cf">
             <div class="controls">
                 <label class="item-label">名称:<span class="check-tips"></span></label>
-                <input type="text" class="text input-large" name="name" value="">
+                <input type="text" class="text input-large" name="name" value="{$info.name}">
             </div>
         </div>
-        <div class="form-item cf">
+        <!--div class="form-item cf">
             <div class="controls">
                 <label class="item-label">描述:<span class="check-tips"></span></label>
                 <textarea class="textarea input-large" name="desc" ></textarea>
             </div>
-        </div>
+        </div-->
 
         <div class="form-item cf">
             <div class="controls">
                 <label class="item-label">描述:<span class="check-tips"></span></label>
-                {:W('Taginput/editor',array(array('input_name'=>'content','server_url'=>$server_url,'content'=>$content_info['content'])))}
+                {:W('Taginput/editor',array(array('input_name'=>'desc','server_url'=>$server_url,'content'=>$info['desc'])))}
             </div>
         </div>
         <div class="form-item cf">
             <div class="controls">
                 <label class="item-label">图片:<span class="check-tips"></span></label>
                 <input type="file" name="img"/>
-                <input class="input" style="" type="file" name="logo"/>
+            </div>
+            <div class="controls">
+                <notempty name="info.img">
+                    <a href="{$info.img}" target="_blank">
+                        <img src="{$info.img}" width="100"/>
+                        <input type="hidden" name="img_old" value="{$info.img}">
+                    </a>
+                </notempty>
             </div>
         </div>
         <div class="form-item cf">
             <div class="controls">
                 <label class="item-label">地址:<span class="check-tips"></span></label>
-                <input type="text" class="text input-large" name="address" value="">
+                <input type="text" class="text input-large" name="address" value="{$info.address}">
             </div>
         </div>
         <div class="form-item cf">
             <div class="controls">
                 <label class="item-label">过期时间:<span class="check-tips"></span></label>
-                <input type="text" class="text time" name="expire_time" value="">
+                <input type="text" class="text time" name="expire_time" value="{$info.expire_time}">
+                <input type="hidden" name="id" value="{$info.mall_id}"/>
             </div>
         </div>
 
