@@ -26,6 +26,7 @@ define ( 'APP_PATH', './Application/' );
  * 当前时间
  */
 define ( 'NOW_TIME', time());
+define ( 'SITE_DOMAIN', 'one.loca');
 
 if(!is_file(APP_PATH . 'User/Conf/config.php')){
 	header('Location: ./install.php');

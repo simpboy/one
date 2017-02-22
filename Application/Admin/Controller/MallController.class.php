@@ -62,6 +62,8 @@ class MallController extends AdminController {
                 $this->error("操作失败");
             }
         }
+        $server_url = U('Admin/Mall/upload_img');
+        $this->assign("server_url",'http://'.SITE_DOMAIN.$server_url);
         $this->display();
     }
 
@@ -74,6 +76,12 @@ class MallController extends AdminController {
 
         $this->meta_title = '电商列表';
         $this->display();
+    }
+
+    public  function upload_img(){
+        $action = I('get.action','','trim');
+        $Up = D('Up');
+        $Up->editor_upload($action);
     }
 
 }
