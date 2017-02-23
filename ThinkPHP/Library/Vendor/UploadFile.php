@@ -257,7 +257,6 @@ class UploadFile {//类定义开始
             //过滤无效的上传
             if (!empty($file['name'])) {
                 //登记上传文件的扩展信息
-                $file['key'] = $key;
                 $file['extension'] = $this->getExt($file['name']);
                 $file['savepath'] = $savePath;
                 $file['savename'] = $this->getSaveName($file);
@@ -357,9 +356,10 @@ class UploadFile {//类定义开始
             $info = array();
             foreach ($fileArray as $key => $file) {
                 //登记上传文件的扩展信息
-                $file['extension'] = $this->getExt($file['name']);
-                $file['savepath'] = $savePath;
-                $file['savename'] = $this->getSaveName($file);
+                $file['extension']  = $this->getExt($file['name']);
+                $file['key']        = $key;
+                $file['savepath']   = $savePath;
+                $file['savename']   = $this->getSaveName($file);
                 // 自动检查附件
                 if ($this->autoCheck) {
                     if (!$this->check($file))
@@ -427,7 +427,8 @@ class UploadFile {//类定义开始
     private function dealFiles($files) {
         $fileArray = array();
         $n = 0;
-        foreach ($files as $file) {
+        foreach ($files as $field=>$file) {
+            $file['field']  =   $field;
             if (is_array($file['name'])) {
                 $keys = array_keys($file);
                 $count = count($file['name']);

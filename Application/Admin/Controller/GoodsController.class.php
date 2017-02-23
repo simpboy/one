@@ -3,25 +3,48 @@
  * 店商管理
  */
 namespace Admin\Controller;
-use User\Api\UserApi as UserApi;
 use Common\Controller;
 
 class GoodsController extends AdminController {
     /**
-     * 添加店商
+     * 添加商品
+     */
+    /**
+     * `goods_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商品id',
+    `mall_id` int(11) NOT NULL DEFAULT '0' COMMENT '店铺id',
+    `cate_id` int(11) NOT NULL DEFAULT '0' COMMENT '分类id',
+    `title` varchar(255) NOT NULL DEFAULT '' COMMENT '商品名称',
+    `sub_title` varchar(255) NOT NULL DEFAULT '' COMMENT '副标题',
+    `price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '价格',
+    `postage` decimal(5,2) NOT NULL DEFAULT '0.00' COMMENT '邮费',
+    `main_img` varchar(255) NOT NULL DEFAULT '' COMMENT '商品主图',
+    `imgs` varchar(255) NOT NULL DEFAULT '' COMMENT '商品图片json',
+    `stock` int(5) NOT NULL DEFAULT '0' COMMENT '库存数量',
+    `sell_reserve` tinyint(1) NOT NULL DEFAULT '0' COMMENT '预定还是销售；0-销售，1预定；\r\n预定不能修改城销售（后期可以复制成销售）',
+    `buy_member_number` int(11) NOT NULL DEFAULT '0' COMMENT '购买过的人数',
+    `sell_number` int(11) NOT NULL DEFAULT '0' COMMENT '售出数量',
+    `comment_number` int(11) NOT NULL DEFAULT '0' COMMENT '评论数',
+    `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '编辑时间',
+    `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '生成时间',
+    `online` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-上线，-1下线',
+    `state` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否可以预定或购买；0可以，-1不可以',
+    `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为正常数据；-1不是正常数据',
      */
     public function add_page(){
         $mall_id = I('get.id',null,'intval');
-        $Mall = M('mall','ngc_');
+        $Mall = M('goods','ngc_');
         if(IS_POST){
             $post_data = I("post.");
 
-            $mall_name      = I("post.name",'','trim');
-            $mall_desc      = I("post.desc",'','trim');
-            $address        = I("post.address",'','trim');
-            $expire_time    = I("post.expire_time",0,'trim');
-            $mall_id        = I("post.id",null,'intval');
-            $img_old        = I("post.img_old",null,'trim');
+            $title          = I("post.title",'','trim');
+            $sub_title      = I("post.sub_title",'','trim');
+            $price          = I("post.price",0,'trim');
+            $postage        = I("post.postage",0,'trim');
+            $main_img       = I("post.main_img",null,'');
+            $stock          = I("post.stock",0,'intval');
+            $sell_reserve   = I("post.sell_reserve",0,'intval');
+            $create_time    = NOW_TIME;
+            $online         = I("post.online",0,'intval');
 
             $Up 			= D('Admin/Up');
             $img_new 		= $Up->save_img();
