@@ -35,7 +35,9 @@ class UpModel extends Model
     public function editor_upload($action){
         $uploadpath = C('PICTURE_UPLOAD');
         $uploadpath = $uploadpath['rootPath'];
-        debug_output($uploadpath);
+        if (substr($uploadpath, 0, 2) == './') {
+            $real_upload_path = SITE_ROOT.substr($uploadpath,1);
+        }
         $config_string = '/* 前后端通信相关的配置,注释只允许使用多行方式 */
 {
     /* 上传图片配置项 */
@@ -47,7 +49,7 @@ class UpModel extends Model
     "imageCompressBorder": 1600, /* 图片压缩最长边限制 */
     "imageInsertAlign": "none", /* 插入的图片浮动方式 */
     "imageUrlPrefix": "", /* 图片访问路径前缀 */
-    "imagePathFormat": "'.$uploadpath.'ueditor/php/upload/image/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 {yyyy}{mm}{dd}/ */
+    "imagePathFormat": "'.$real_upload_path.'ueditor/php/upload/image/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 {yyyy}{mm}{dd}/ */
                                 /* {filename} 会替换成原文件名,配置这项需要注意中文乱码问题 */
                                 /* {rand:6} 会替换成随机数,后面的数字是随机数的位数 */
                                 /* {time} 会替换成时间戳 */
@@ -228,9 +230,7 @@ class UpModel extends Model
             /* 返回数据 */
             $file_info  = $up->getFileInfo();
             $uploadurl  = C('DOMAIN');
-            $uploadpath = C('PICTURE_UPLOAD');
-            $uploadpath = $uploadpath['rootPath'];
-            $file_info['url']   = $uploadurl.str_replace($uploadpath,'',$file_info['url']);
+            $file_info['url']   = $uploadurl.str_replace(SITE_ROOT,'',$file_info['url']);
             return json_encode($file_info);
     }
 }

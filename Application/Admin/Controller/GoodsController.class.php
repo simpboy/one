@@ -6,7 +6,7 @@ namespace Admin\Controller;
 use User\Api\UserApi as UserApi;
 use Common\Controller;
 
-class MallController extends AdminController {
+class GoodsController extends AdminController {
     /**
      * 添加店商
      */

@@ -28,6 +28,8 @@ define ( 'APP_PATH', './Application/' );
 define ( 'NOW_TIME', time());
 define ( 'SITE_DOMAIN', 'one.loca');
 
+define ( 'SITE_ROOT', dirname(__FILE__));
+
 if(!is_file(APP_PATH . 'User/Conf/config.php')){
 	header('Location: ./install.php');
 	exit;

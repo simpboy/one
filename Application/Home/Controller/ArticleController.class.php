@@ -110,5 +110,4 @@ class ArticleController extends HomeController {
 			$this->error('分类不存在或被禁用！');
 		}
 	}
-
 }
