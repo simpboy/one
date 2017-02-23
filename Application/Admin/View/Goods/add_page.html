@@ -9,22 +9,78 @@
 	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
 	<div class="main-title cf">
 		<h2>
-			<a href="{:U('mall/add_page')}">添加电商</a>
+			<a href="{:U('goods/add_page')}">添加商品</a>
 		</h2>
 	</div>
 	<!-- 标签页导航 -->
 <div class="tab-wrap">
 	<ul class="tab-nav nav">
-        <li class="current"><a href="{:U('mall/add_page')}">添加电商</a></li>
-        <li ><a href="{:U('mall/index')}">电商列表</a></li>
+        <li class="current"><a href="{:U('goods/add_page')}">添加商品</a></li>
+        <li ><a href="{:U('goods/index')}">商品列表</a></li>
 	</ul>
 	<div class="tab-content">
 	<!-- 表单 -->
-	<form id="form" action="{:U('Mall/add_page')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
+	<form id="form" action="{:U('goods/add_page')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">名称:<span class="check-tips"></span></label>
-                <input type="text" class="text input-large" name="name" value="{$info.name}">
+                <label class="item-label">标题:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="title" value="{$info.title}">
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">副标题:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="sub_title" value="{$info.sub_title}">
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">价格:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="price" value="{$info.price}">
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">运费:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="postage" value="{$info.postage}">
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">主图:<span class="check-tips"></span></label>
+                <input type="file" name="main_img"/>
+            </div>
+            <div class="controls">
+                <notempty name="info.img">
+                    <a href="{$info.main_img}" target="_blank">
+                        <img src="{$info.main_img}" width="100"/>
+                        <input type="hidden" name="img_old" value="{$info.main_img}">
+                    </a>
+                </notempty>
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">图片:<span class="check-tips"></span></label>
+                <input type="file" name="imgs[]"/>
+            </div>
+            <div class="controls">
+                <label class="item-label">图片:<span class="check-tips"></span></label>
+                <input type="file" name="imgs[]"/>
+            </div>
+            <div class="controls">
+                <notempty name="info.img">
+                    <a href="{$info.main_img}" target="_blank">
+                        <img src="{$info.main_img}" width="100"/>
+                        <input type="hidden" name="img_old" value="{$info.main_img}">
+                    </a>
+                </notempty>
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">库存:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="stock" value="{$info.stock}">
             </div>
         </div>
         <!--div class="form-item cf">
@@ -36,41 +92,49 @@
 
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">描述:<span class="check-tips"></span></label>
-                {:W('Taginput/editor',array(array('input_name'=>'desc','server_url'=>$server_url,'content'=>$info['desc'])))}
+                <label class="item-label">详情:<span class="check-tips"></span></label>
+                {:W('Taginput/editor',array(array('input_name'=>'detail','server_url'=>$server_url,'content'=>$info['detail'])))}
             </div>
         </div>
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">图片:<span class="check-tips"></span></label>
-                <input type="file" name="img"/>
-            </div>
-            <div class="controls">
-                <notempty name="info.img">
-                    <a href="{$info.img}" target="_blank">
-                        <img src="{$info.img}" width="100"/>
-                        <input type="hidden" name="img_old" value="{$info.img}">
-                    </a>
-                </notempty>
+                <label class="item-label">销售/预订:<span class="check-tips"></span></label>
+                <label for="sell_reserve_0">销售</label>
+                <input type="radio" class="radio" id="sell_reserve_0" name="sell_reserve" value="0" <eq name="info.sell_reserve" value="0">checked=“checked”</eq> <empty name="info.sell_reserve">checked=“checked”</empty> />
+
+                <label for="sell_reserve_1">预订</label>
+                <input type="radio" class="radio" id="sell_reserve_1" name="sell_reserve" value="1" <eq name="info.sell_reserve" value="1">checked=“checked”</eq> />
             </div>
         </div>
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">地址:<span class="check-tips"></span></label>
-                <input type="text" class="text input-large" name="address" value="{$info.address}">
+                <label class="item-label">上线:<span class="check-tips"></span></label>
+                <label for="sell_reserve_0">上线</label>
+                <input type="radio" class="radio" id="online_0" name="online"value="0"  <eq name="info.online" value="0">checked=“checked”</eq> <empty name="info.online">checked=“checked”</empty> />
+
+                <label for="sell_reserve_1">下线</label>
+                <input type="radio" class="radio" id="online_-1" name="online" value="-1" <eq name="info.online" value="-1">checked=“checked”</eq> />
             </div>
         </div>
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">过期时间:<span class="check-tips"></span></label>
-                <input type="text" class="text time" name="expire_time" value="{$info.expire_time}">
-                <input type="hidden" name="id" value="{$info.mall_id}"/>
+                <label class="item-label">是否可以下单:<span class="check-tips"></span></label>
+                <label for="sell_reserve_0">是</label>
+                <input type="radio" class="radio" id="state_0" name="state" value="0" <eq name="info.state" value="0">checked=“checked”</eq> <empty name="info.state">checked=“checked”</empty> />
+
+                <label for="sell_reserve_1">否</label>
+                <input type="radio" class="radio" id="state_-1" name="state" value="-1" <eq name="info.state" value="-1">checked=“checked”</eq> />
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <input type="hidden" name="id" value="{$info.goods_id}"/>
             </div>
         </div>
 
 		<div class="form-item cf">
 			<button class="btn submit-btn hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
-			<a class="btn btn-return" href="{:U('article/index?cate_id='.$cate_id)}">返 回</a>
+			<a class="btn btn-return" href="{:U('goods/add_page')}">返 回</a>
 		</div>
 	</form>
 	</div>

@@ -28,7 +28,7 @@ class MallController extends AdminController {
 
             if(!empty($img_new)){
                 $domain = C('DOMAIN')?C('DOMAIN'):'http://admin.one.loca/';
-                $img    = $domain.$img_new[0];
+                $img    = $domain.$img_new['img'];
             }elseif(!empty($img_old)){
                 $img    = $img_old;
             }

@@ -36,11 +36,13 @@ class GoodsController extends AdminController {
         if(IS_POST){
             $post_data = I("post.");
 
+
             $title          = I("post.title",'','trim');
             $sub_title      = I("post.sub_title",'','trim');
             $price          = I("post.price",0,'trim');
             $postage        = I("post.postage",0,'trim');
             $main_img       = I("post.main_img",null,'');
+            $mail_img       = I("post.imgs",'','trim');
             $stock          = I("post.stock",0,'intval');
             $sell_reserve   = I("post.sell_reserve",0,'intval');
             $create_time    = NOW_TIME;

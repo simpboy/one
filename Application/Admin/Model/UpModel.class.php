@@ -25,7 +25,15 @@ class UpModel extends Model
             $info_array = $upload->getUploadFileInfo();
             $path = array();
             foreach($info_array as $info){
-                $path[] = $info['savename'] ? $uploadpath.$dir.$info['savename'] : '';
+                if(!isset($path[$info['field']])){
+                    $path[$info['field']] = $info['savename'] ? $uploadpath.$dir.$info['savename'] : '';
+                }else{
+                    $item_0 = $path[$info['field']];
+                    unset($path[$info['field']]);
+                    $path[$info['field']][] = $item_0;
+                    $path[$info['field']][]   = $info['savename'] ? $uploadpath.$dir.$info['savename'] : '';
+                }
+
             }
             return $path;
         }

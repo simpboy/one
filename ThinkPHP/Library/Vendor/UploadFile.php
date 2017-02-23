@@ -430,11 +430,14 @@ class UploadFile {//类定义开始
         foreach ($files as $field=>$file) {
             $file['field']  =   $field;
             if (is_array($file['name'])) {
+                $field = $file['field'];
                 $keys = array_keys($file);
                 $count = count($file['name']);
                 for ($i = 0; $i < $count; $i++) {
-                    foreach ($keys as $key)
+                    foreach ($keys as $key){
                         $fileArray[$n][$key] = $file[$key][$i];
+                    }
+                    $fileArray[$n]['field'] = $field;
                     $n++;
                 }
             } else {
