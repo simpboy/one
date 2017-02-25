@@ -30,8 +30,8 @@ class UpModel extends Model
                 }else{
                     $item_0 = $path[$info['field']];
                     unset($path[$info['field']]);
-                    $path[$info['field']][] = $item_0;
-                    $path[$info['field']][]   = $info['savename'] ? $uploadpath.$dir.$info['savename'] : '';
+                    $path[$info['field']][]     = $item_0;
+                    $path[$info['field']][]     = $info['savename'] ? $uploadpath.$dir.$info['savename'] : '';
                 }
 
             }

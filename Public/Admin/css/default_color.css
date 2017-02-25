@@ -148,10 +148,10 @@ select {
 /* 多行两列表单
 ------------------------------------------ */
 .form-horizontal .item-label .check-tips {
-	color: #aaa; /* 表单label后面的提示文字 */
+	color: #ff0000; /* 表单label后面的提示文字 */
 }
 .form-horizontal .controls .check-tips {
-	color: #999; /*表单ajax操作完成后返回的提示文字*/
+	color: #ff0000; /*表单ajax操作完成后返回的提示文字*/
 }
 
 /* 搜索表单

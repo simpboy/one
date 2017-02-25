@@ -6,6 +6,10 @@
 </block>
 
 <block name="body">
+    <style type="text/css">
+        .img_list{float:left; text-align: center; margin-right:2px;}
+        .img_list .del_img{color:#2d7200; cursor:pointer; padding:5px;}
+    </style>
 	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
 	<div class="main-title cf">
 		<h2>
@@ -23,7 +27,7 @@
 	<form id="form" action="{:U('goods/add_page')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">标题:<span class="check-tips"></span></label>
+                <label class="item-label">标题:<span class="check-tips">*</span></label>
                 <input type="text" class="text input-large" name="title" value="{$info.title}">
             </div>
         </div>
@@ -35,7 +39,7 @@
         </div>
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">价格:<span class="check-tips"></span></label>
+                <label class="item-label">价格:<span class="check-tips">*</span></label>
                 <input type="text" class="text input-large" name="price" value="{$info.price}">
             </div>
         </div>
@@ -47,14 +51,14 @@
         </div>
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">主图:<span class="check-tips"></span></label>
+                <label class="item-label">主图:<span class="check-tips">*</span></label>
                 <input type="file" name="main_img"/>
             </div>
             <div class="controls">
-                <notempty name="info.img">
+                <notempty name="info.main_img">
                     <a href="{$info.main_img}" target="_blank">
                         <img src="{$info.main_img}" width="100"/>
-                        <input type="hidden" name="img_old" value="{$info.main_img}">
+                        <input type="hidden" name="main_img_old" value="{$info.main_img}">
                     </a>
                 </notempty>
             </div>
@@ -63,23 +67,25 @@
             <div class="controls">
                 <label class="item-label">图片:<span class="check-tips"></span></label>
                 <input type="file" name="imgs[]"/>
+                <span class="up_img_btn btn">增加</span>
             </div>
             <div class="controls">
-                <label class="item-label">图片:<span class="check-tips"></span></label>
-                <input type="file" name="imgs[]"/>
-            </div>
-            <div class="controls">
-                <notempty name="info.img">
-                    <a href="{$info.main_img}" target="_blank">
-                        <img src="{$info.main_img}" width="100"/>
-                        <input type="hidden" name="img_old" value="{$info.main_img}">
-                    </a>
+                <notempty name="info.imgs">
+                    <volist name="info.imgs" id="img" >
+                        <div class="img_list">
+                            <a href="{$img}" target="_blank">
+                                <img src="{$img}" width="100"/>
+                                <input type="hidden" name="imgs_old[]" value="{$img}"><br/>
+                            </a>
+                            <span class="del_img">X</span>
+                        </div>
+                    </volist>
                 </notempty>
             </div>
         </div>
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">库存:<span class="check-tips"></span></label>
+                <label class="item-label">库存:<span class="check-tips">*</span></label>
                 <input type="text" class="text input-large" name="stock" value="{$info.stock}">
             </div>
         </div>
@@ -90,6 +96,24 @@
             </div>
         </div-->
 
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">产地:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="origin" value="{$info.origin}">
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">重量:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="weight" value="{$info.weight}">
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">重量单位:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="unit" placeholder="g或者kg" value="{$info.unit}">
+            </div>
+        </div>
         <div class="form-item cf">
             <div class="controls">
                 <label class="item-label">详情:<span class="check-tips"></span></label>
@@ -167,6 +191,15 @@ $(function(){
         autoclose:true
     });
     showTab();
+
+    $('.controls').on('click','.del_img',function () {
+        $(this).parent().remove();
+    });
+    $(document).on('click','.up_img_btn',function () {
+        var up_img = $(this).parent().clone();
+        $(up_img).filter('input').val('');
+        $(this).parent().parent().append(up_img);
+    })
 });
 </script>
 </block>
