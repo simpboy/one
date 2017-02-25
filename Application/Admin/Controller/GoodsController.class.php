@@ -118,6 +118,7 @@ class GoodsController extends AdminController {
         $server_url     = U('Admin/Mall/upload_img');
         $this->assign("server_url",'http://'.SITE_DOMAIN.$server_url);
         $this->assign('info',$info);
+        $this->assign('meta_title','添加商品');
         $this->display();
     }
 
