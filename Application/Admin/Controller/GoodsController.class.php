@@ -34,9 +34,12 @@ class GoodsController extends AdminController {
             $detail         = I("post.detail",'','trim');
             $unit           = I("post.unit",'','trim');
 
+            debug_output($imgs_old,'$imgs_old');
             $Up 			= D('Admin/Up');
             $img_new 		= $Up->save_img();
-
+            debug_output('aaa','aaa');
+            debug_output($_FILES,'$_FILES');
+            debug_output($img_new,'$img_new');
             $main_img_new   = $img_new['main_img'];
 
             $main_img = '';

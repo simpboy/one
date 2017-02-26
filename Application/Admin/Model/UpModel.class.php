@@ -23,15 +23,18 @@ class UpModel extends Model
         } // 上传成功 获取上传文件信息
         else {
             $info_array = $upload->getUploadFileInfo();
+            debug_output($info_array,'$info_array');
             $path = array();
             foreach($info_array as $info){
                 if(!isset($path[$info['field']])){
                     $path[$info['field']] = $info['savename'] ? $uploadpath.$dir.$info['savename'] : '';
+                }elseif(is_array($path[$info['field']])) {
+                    $path[$info['field']][] = $info['savename'] ? $uploadpath . $dir . $info['savename'] : '';
                 }else{
                     $item_0 = $path[$info['field']];
                     unset($path[$info['field']]);
                     $path[$info['field']][]     = $item_0;
-                    $path[$info['field']][]     = $info['savename'] ? $uploadpath.$dir.$info['savename'] : '';
+                    $path[$info['field']][] = $info['savename'] ? $uploadpath . $dir . $info['savename'] : '';
                 }
 
             }
