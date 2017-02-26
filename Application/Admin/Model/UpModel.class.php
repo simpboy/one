@@ -23,7 +23,7 @@ class UpModel extends Model
         } // 上传成功 获取上传文件信息
         else {
             $info_array = $upload->getUploadFileInfo();
-            debug_output($info_array,'$info_array');
+//            debug_output($info_array,'$info_array');
             $path = array();
             foreach($info_array as $info){
                 if(!isset($path[$info['field']])){
