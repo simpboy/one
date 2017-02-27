@@ -129,30 +129,44 @@ class GoodsController extends AdminController {
      * 列表页
      */
     public function index(){
-        $Goods = M('mall','ngc_');
-
+        $Goods = M('goods','ngc_');
         $list = $this->lists($Goods,['del'=>['neq',1]]);
-        foreach($list as $k=>&$v){
-            if($v['expire_time']>time()){
-                $v['is_expire'] = 0;
-            }else{
-                $v['is_expire'] = 1;
-            }
-        }
 
         $this->assign("_list",$list);
-        $this->meta_title = '电商列表';
+        $this->meta_title = '商品列表';
         $this->display();
     }
-    public function on_off()
+
+    /**
+     * 更改上下线
+     */
+    public function on_off_online()
     {
         $id = I('get.id');
-        $Goods = M('mall','ngc_');
-        $state = $Goods->where(['mall_id'=>$id])->getField('state');
+        $Goods = M('goods','ngc_');
+        $online = $Goods->where(['goods_id'=>$id])->getField('online');
+        $data = [
+            'online' => abs($online)-1
+        ];
+        $res = $Goods->where(['goods_id'=>$id])->save($data);
+        if($res!==false){
+            $this->success("操作成功");
+        }else{
+            $this->error("操作失败");
+        }
+    }
+    /*
+     * 更改下单状态
+     */
+    public function on_off_state()
+    {
+        $id = I('get.id');
+        $Goods = M('goods','ngc_');
+        $state = $Goods->where(['goods_id'=>$id])->getField('state');
         $data = [
             'state' => abs($state)-1
         ];
-        $res = $Goods->where(['mall_id'=>$id])->save($data);
+        $res = $Goods->where(['goods_id'=>$id])->save($data);
         if($res!==false){
             $this->success("操作成功");
         }else{
@@ -162,11 +176,11 @@ class GoodsController extends AdminController {
 
     public function del(){
         $id = I('get.id');
-        $Goods = M('mall','ngc_');
+        $Goods = M('goods','ngc_');
         $data = [
             'del' => 1
         ];
-        $res = $Goods->where(['mall_id'=>$id])->save($data);
+        $res = $Goods->where(['goods_id'=>$id])->save($data);
         if($res!==false){
             $this->success("操作成功");
         }else{
