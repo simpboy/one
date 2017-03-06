@@ -141,7 +141,8 @@ class OrderController extends AdminController {
         $list = $this->lists2($Order,$where,$order,$field=true, 'ngc_order_goods og on o.order_id=og.order_id',$alias='o');
 
         $this->assign("_list",$list);
-        $this->meta_title = '列表';
+        $this->meta_title = '订单列表';
+        $this->assign("title",$this->meta_title);
         $this->display();
     }
 

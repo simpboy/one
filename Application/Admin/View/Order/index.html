@@ -9,16 +9,16 @@
 	<!-- 标题 -->
 	<div class="main-title">
 		<h2>
-		电商列表({$_total})
+		{$title}({$_total})
 		</h2>
 	</div>
 
 	<!-- 按钮工具栏 -->
 	<div class="cf">
 		<div class="fl">
-			<div class="btn-group">
+			<!-- div class="btn-group">
 					<a class="btn "  href="{:U('Mall/add_page')}">新 增</a>
-			</div>
+			</div-->
             <!--button class="btn ajax-post" target-form="ids" url="{:U("Mall/setState",array("status"=>1))}">启 用</button>
 			<button class="btn ajax-post" target-form="ids" url="{:U("Mall/setState",array("status"=>0))}">禁 用</button>
 			<input type="hidden" class="hide-data" name="cate_id" value="{$cate_id}"/>
@@ -70,13 +70,17 @@
                     <th class="row-selected row-selected">
                         <input class="check-all" type="checkbox">
                     </th>
-					<th>ID</th>
-					<th>名称</th>
-					<th>图片</th>
-					<th>地址</th>
-					<th>过期</th>
+					<th>Order_ID</th>
+					<th>用户名</th>
+					<th>总金额</th>
+					<th>支付金额</th>
+					<th>待支付金额</th>
+					<th>商品费用</th>
+					<th>快递费用</th>
+					<th>快递地址</th>
+					<th>购买/预订</th>
+					<th>生成时间</th>
 					<th>状态</th>
-					<th>过期时间</th>
 					<th>操作</th>
                 </tr>
             </thead>
