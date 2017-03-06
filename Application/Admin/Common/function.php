@@ -471,3 +471,12 @@ function debug_output($data="",$tag="",$debug=true,$append=true,$call_back='json
 function output($data="",$tag="",$debug=true,$append=true,$call_back='json_encode',$file_path=''){
     debug_output($data,$tag,$debug,$append,$call_back='json_encode',$file_path);
 }
+
+/**
+ * is-string
+ * @param $str
+ * @return bool
+ */
+function checkStr($str){
+    return is_string($str)&&!empty($str);
+}

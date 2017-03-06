@@ -566,6 +566,25 @@ class AdminController extends Controller {
         $this->assign('_total',$total);
         $options['limit'] = $page->firstRow.','.$page->listRows;
         $res = NULL;
+        if($field===true||1){
+            $field_arr =[];
+            $model_field = $model->getDbFields();
+            foreach($model_field as $k=>$v){
+                $field_arr[] = $alias.".".$v;
+            }
+            $join = preg_replace('/\s+/',' ',$join);
+            $join_arr   = explode(' ',$join);
+            $join_alias = $join_arr[1];
+            $join_table = $join_arr[0];
+            $join_model = M($join_table);
+            $join_field = $join_model->getDbFields();
+            foreach($join_field as $k=>$v){
+                $field_arr[] = $join_alias.".".$v;
+            }
+            $field = implode(',',$field_arr);
+        }
+
+
         if(!checkStr($join) && !checkStr($group)){
             if(checkStr($alias)){
                 $res = $model->alias($alias)->field($field)->where($where)->order($order)->limit($page->firstRow,$page->listRows)->select();
