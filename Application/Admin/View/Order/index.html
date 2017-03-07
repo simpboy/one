@@ -72,6 +72,7 @@
                     </th>
 					<th>Order_ID</th>
 					<th>用户名</th>
+					<th>电话</th>
 					<th>总金额</th>
 					<th>支付金额</th>
 					<th>待支付金额</th>
@@ -89,38 +90,33 @@
             <tbody>
                 <volist name="_list" id="vo">
                     <tr>
-                        <td><input class="ids" type="checkbox" value="{$vo['mall_id']}" name="ids[]"></td>
-                        <td>{$vo.mall_id}</td>
-						<td>{$vo.name}</td>
-						<td>
-							<notempty name="vo.img">
-								<a href="{$vo.img}" target="_blank">
-									<img width="40" src="{$vo.img}"/>
-								</a>
-							</notempty>
-						</td>
+                        <td><input class="ids" type="checkbox" value="{$vo['order_id']}" name="ids[]"></td>
+                        <td>{$vo.order_id}</td>
+						<td>{$vo.uid|get_username}</td>
+						<td>{$vo.uid||get_table_field=###,'uid','mobile','ucenter_member'}</td>
+						<td>{$vo.full_money}</td>
+						<td>{$vo.pay_money}</td>
+						<td>{$vo.not_pay_money}</td>
+						<td>{$vo.goods_fee}</td>
+						<td>{$vo.post_fee}</td>
 						<td>{$vo.address}</td>
 						<td>
-							<switch name="vo.is_expire">
-								<case value="0">正常</case>
-								<case value="1"><span style="color:#ff0000;">过期</span></case>
+							<switch name="vo.type">
+								<case value="0">购买</case>
+								<case value="1"><span style="color:#ff0000;">预订</span></case>
 							</switch>
 						</td>
+						<td>{$vo.create_time|date='Y-m-d H:i',###}</td>
 						<td>
 							<switch name="vo.state">
-								<case value="0">上线</case>
+								<case value="0">未支付</case>
 								<case value="-1"><span style="color:#ff0000;">下线</span></case>
 							</switch>
 						</td>
-						<td>{$vo.expire_time|date='Y-m-d H:i',###}</td>
 						<td>
-							<a href="{:U('Mall/add_page',['id'=>$vo['mall_id']])}">编辑</a>&nbsp;&nbsp;
-							<switch name="vo.state">
-								<case value="0"> <a  href="{:U('Mall/on_off',['id'=>$vo['mall_id']])}">下线</a></case>
-								<case value="-1"><a  href="{:U('Mall/on_off',['id'=>$vo['mall_id']])}">上线</a></case>
-							</switch>
+							<a href="{:U('Order/view',['id'=>$vo['order_id']])}">编辑</a>&nbsp;&nbsp;
 							&nbsp;&nbsp;
-							<a  class="ajax-get" href="{:U('Mall/del',['id'=>$vo['mall_id']])}">删除</a>&nbsp;&nbsp;
+							<!--a  class="ajax-get" href="{:U('Order/del',['id'=>$vo['order_id']])}">删除</a-->&nbsp;&nbsp;
 						</td>
                     </tr>
                 </volist>
