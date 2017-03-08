@@ -19,11 +19,11 @@
 <div class="tab-wrap">
 	<ul class="tab-nav nav">
         <li ><a href="{:U('order/index')}">订单列表</a></li>
-        <li class="current"><a href="{:U('order/view')}">查看订单</a></li>
+        <li class="current"><a href="{:U('order/view',['id'=>$id])}">查看订单</a></li>
 	</ul>
 	<div class="tab-content">
 	<!-- 表单 -->
-	<form id="form" action="{:U('Mall/add_page')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
+	<form id="form" action="{:U('Order/edit_post')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
         <div class="form-item cf">
             <div class="controls">
                 <label class="item-label">订单ID:<span class="check-tips"></span></label>
@@ -120,6 +120,34 @@
                     </volist>
                     </tbody>
                 </table>
+            </div>
+        </div>
+		<input type="hidden" name="id" value="{$id}"/>
+		<div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">快递名称:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="express_name" value="{$order_info.express_name}">
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">快递单号:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="express_sn" value="{$order_info.express_sn}">
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">是否更新发货时间:<span class="check-tips"></span></label>
+                <label for="sell_reserve_0">否</label>
+                <input type="radio" class="radio" id="update_express_time_0" name="update_express_time" value="0" checked />
+
+                <label for="sell_reserve_1">是</label>
+                <input type="radio" class="radio" id="update_express_time_1" name="update_express_time" value="1"  />
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <input type="submit" class="btn"  value="发货"/>
             </div>
         </div>
 	</form>
