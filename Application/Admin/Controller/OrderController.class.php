@@ -15,44 +15,48 @@ class OrderController extends AdminController {
         $Order_goods   	= M('order_goods','ngc_');
         $Address   		= M('address','ngc_');
         $Goods          = M('goods','ngc_');
-        
+
         $order_info		= $Order->where(['order_id'=>$order_id])->find();
         $order_goods	= $Order_goods->where(['order_id'=>$order_id])->select();
         $address		= $Address->where(['order_id'=>$order_id])->find();
-        
-        var_dump($order_info);
-        var_dump($order_goods);
-        var_dump($address);
-        
-        
 
+        $goods_id_array = array_column($order_goods,'goods_id');
+        $goods          = $Goods->where(['goods_id'=>['in',$goods_id_array]])->select();
 
+        foreach($order_goods as $k=>&$v){
+            foreach($goods as $value){
+                if($v['goods_id']==$value['goods_id']){
+                    $v['goods_info'] = $value;
+                }
+            }
+        }
+        $this->assign('id',$order_id);
 
-       
+        $this->assign('order_info',$order_info);
+        $this->assign('order_goods',$order_goods);
+        $this->assign('address',$address);
+
         $this->assign('meta_title','查看订单');
         $this->display();
     }
 
     /**
      * 列表页
-     * lists2 ($model,$where=array(),$order='',$field=true, $join='',$alias='',$group= '',$target='',$page_id='')
-     *
-     *
      */
     public function index(){
         $Order 			= M('order','ngc_');
         $Order_goods 	= M('order_goods','ngc_');
         $Address 		= M('address','ngc_');
         $where = [
-            'o.status'    => 0
+            'status'    => 0
         ];
-        $order = 'o.order_id desc';
-        $list = $this->lists2($Order,$where,$order,$field=true, 'ngc_order_goods og on o.order_id=og.order_id',$alias='o');
+        $order = 'order_id desc';
+//        $list = $this->lists2($Order,$where,$order,$field=true, 'ngc_order_goods og on o.order_id=og.order_id',$alias='o');
+        $list = $this->lists($Order,$where,$order);
         foreach($list as $k=>&$v){
         	$address 		= $Address->where()->getField('address');
         	$v['address'] 	= $address;
         }
-
         $this->assign("_list",$list);
         $this->meta_title = '订单列表';
         $this->assign("title",$this->meta_title);

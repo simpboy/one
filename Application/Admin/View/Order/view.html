@@ -6,72 +6,122 @@
 </block>
 
 <block name="body">
+    <style type="text/css">
+        tr{ height:50px;line-height: 50px;}
+    </style>
 	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
 	<div class="main-title cf">
 		<h2>
-			<a href="{:U('mall/add_page')}">查看订单</a>
+			<a href="{:U('order/view',['id'=>$id])}">查看订单</a>
 		</h2>
 	</div>
 	<!-- 标签页导航 -->
 <div class="tab-wrap">
 	<ul class="tab-nav nav">
-        <li class="current"><a href="{:U('mall/add_page')}">查看订单</a></li>
-        <li ><a href="{:U('mall/index')}">订单列表</a></li>
+        <li ><a href="{:U('order/index')}">订单列表</a></li>
+        <li class="current"><a href="{:U('order/view')}">查看订单</a></li>
 	</ul>
 	<div class="tab-content">
 	<!-- 表单 -->
 	<form id="form" action="{:U('Mall/add_page')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">名称:<span class="check-tips"></span></label>
-                <input type="text" class="text input-large" name="name" value="{$info.name}">
-            </div>
-        </div>
-        <!--div class="form-item cf">
-            <div class="controls">
-                <label class="item-label">描述:<span class="check-tips"></span></label>
-                <textarea class="textarea input-large" name="desc" ></textarea>
-            </div>
-        </div-->
-
-        <div class="form-item cf">
-            <div class="controls">
-                <label class="item-label">描述:<span class="check-tips"></span></label>
-                {:W('Taginput/editor',array(array('input_name'=>'desc','server_url'=>$server_url,'content'=>$info['desc'])))}
+                <label class="item-label">订单ID:<span class="check-tips"></span></label>
+                {$order_info.order_id}
             </div>
         </div>
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">图片:<span class="check-tips"></span></label>
-                <input type="file" name="img"/>
-            </div>
-            <div class="controls">
-                <notempty name="info.img">
-                    <a href="{$info.img}" target="_blank">
-                        <img src="{$info.img}" width="100"/>
-                        <input type="hidden" name="img_old" value="{$info.img}">
-                    </a>
-                </notempty>
+                <label class="item-label">用户名:<span class="check-tips"></span></label>
+                {$order_info.uid|get_username}
             </div>
         </div>
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">地址:<span class="check-tips"></span></label>
-                <input type="text" class="text input-large" name="address" value="{$info.address}">
+                <label class="item-label">总金额:<span class="check-tips"></span></label>
+                {$order_info.full_money}
             </div>
         </div>
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">过期时间:<span class="check-tips"></span></label>
-                <input type="text" class="text time" name="expire_time" value="{$info.expire_time}">
-                <input type="hidden" name="id" value="{$info.mall_id}"/>
+                <label class="item-label">待支付金额:<span class="check-tips"></span></label>
+                {$order_info.not_pay_money}
             </div>
         </div>
-
-		<div class="form-item cf">
-			<button class="btn submit-btn hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
-			<a class="btn btn-return" href="{:U('article/index?cate_id='.$cate_id)}">返 回</a>
-		</div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">商品价格:<span class="check-tips"></span></label>
+                {$order_info.goods_fee}
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">快递费:<span class="check-tips"></span></label>
+                {$order_info.post_fee}
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">收货地址:<span class="check-tips"></span></label>
+                {$address.address}
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">收货电话:<span class="check-tips"></span></label>
+                {$address.mobile}
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">收货人:<span class="check-tips"></span></label>
+                {$address.nickname}
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">购买/预订:<span class="check-tips"></span></label>
+                <switch name="order_info.type">
+                    <case value="0">购买</case>
+                    <case value="1">预订</case>
+                </switch>
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">下单时间:<span class="check-tips"></span></label>
+                {$order_info.create_time|date='Y-m-d H:i',###}
+            </div>
+        </div>
+        <div class="form-item cf">
+            <label class="item-label">购买的商品:<span class="check-tips"></span></label>
+            <div class="data-table" style="width:60%;">
+                <table>
+                    <!-- 表头 -->
+                    <thead>
+                    <tr>
+                        <th>商品ID</th>
+                        <th>商品名称</th>
+                        <th>购买数量</th>
+                        <th>商品图片</th>
+                    </tr>
+                    </thead>
+                    <!-- 列表 -->
+                    <tbody>
+                    <volist name="order_goods" id="goods_info">
+                    <tr>
+                        <td>{$goods_info['goods_id']}</td>
+                        <td>{$goods_info['goods_info']['title']}</td>
+                        <td>{$goods_info['goods_number']}</td>
+                        <td>
+                            <a href="{$goods_info['goods_info']['main_img']}" target="_blank"><img style="height: 30px;" src="{$goods_info['goods_info']['main_img']}"/></a>
+                        </td>
+                    </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 	</form>
 	</div>
 </div>
