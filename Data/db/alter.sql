@@ -12,3 +12,9 @@ alter table `ngc_goods_detail` add column `unit` varchar(50) NOT NULL DEFAULT 'g
 alter table `ngc_area` COMMENT='地区表';
 alter table `ngc_address` add column `mobile` varchar(20) NOT NULL DEFAULT '' COMMENT '收货人电话' after `address`;
 alter table `ngc_address` add column `nickname` varchar(20) NOT NULL DEFAULT '' COMMENT '收货人姓名' after `address`;
+
+
+alter table `ngc_order` add column   `express_state` tinyint(1) NOT NULL DEFAULT '0' COMMENT '快递状态；0-未发货，1-代发货，2-已发货，3-已收货'after `type`;
+alter table `ngc_order` add column   `express_time` int(11) NOT NULL DEFAULT '0' COMMENT '快递发货时间;输入订单号的时间'after `type`;
+alter table `ngc_order` add column   `express_sn` varchar(50) NOT NULL DEFAULT '' COMMENT '快递单号'after `type`;
+alter table `ngc_order` add column `express_name` varchar(50) NOT NULL DEFAULT '' COMMENT '快递名称' after `type`;
