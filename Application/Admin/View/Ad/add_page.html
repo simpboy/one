@@ -3,37 +3,53 @@
 	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
 	<div class="main-title cf">
 		<h2>
-			<a href="{:U('A/add_page')}">添加电商</a>
+			<a href="{:U('ad/add_page')}">添加广告</a>
 		</h2>
 	</div>
 	<!-- 标签页导航 -->
 <div class="tab-wrap">
 	<ul class="tab-nav nav">
-        <li class="current"><a href="{:U('mall/add_page')}">添加电商</a></li>
-        <li ><a href="{:U('mall/index')}">电商列表</a></li>
+        <li class="current"><a href="{:U('ad/add_page')}">添加广告</a></li>
+        <li ><a href="{:U('ad/index')}">广告列表</a></li>
 	</ul>
 	<div class="tab-content">
 	<!-- 表单 -->
-	<form id="form" action="{:U('Mall/add_page')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
+	<form id="form" action="{:U('ad/add_page')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{$info.ad_id}"/>
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">名称:<span class="check-tips"></span></label>
-                <input type="text" class="text input-large" name="name" value="{$info.name}">
+                <label class="item-label">广告标题:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="title" value="{$info.title}">
             </div>
         </div>
-        <!--div class="form-item cf">
+        <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">描述:<span class="check-tips"></span></label>
-                <textarea class="textarea input-large" name="desc" ></textarea>
+                <label class="item-label">广告链接:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="url" value="{$info.url}">
             </div>
-        </div-->
+        </div>
+
+        <select name="position_id">
+            <volist name="position_list" id="vo">
+                <option value="{$vo.position_id}" <eq name="vo.position_id" value="info.position_id">selected</eq>>{$vo.name}</option>
+            </volist>
+        </select>
 
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">描述:<span class="check-tips"></span></label>
-                {:W('Taginput/editor',array(array('input_name'=>'desc','server_url'=>$server_url,'content'=>$info['desc'])))}
+                <label class="item-label">显示顺序:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="display_order" value="{$info.display_order}">
             </div>
         </div>
+        <div class="controls">
+            <label class="item-label">上线:<span class="check-tips"></span></label>
+            <label for="online_0">下线</label>
+            <input type="radio" class="radio" id="online_0" name="online"value="0"  <eq name="info.online" value="0">checked=“checked”</eq> <empty name="info.online">checked=“checked”</empty> />
+
+            <label for="online_1">上线</label>
+            <input type="radio" class="radio" id="online_1" name="online" value="1" <eq name="info.online" value="1">checked=“checked”</eq> />
+        </div>
+
         <div class="form-item cf">
             <div class="controls">
                 <label class="item-label">图片:<span class="check-tips"></span></label>
@@ -48,23 +64,9 @@
                 </notempty>
             </div>
         </div>
-        <div class="form-item cf">
-            <div class="controls">
-                <label class="item-label">地址:<span class="check-tips"></span></label>
-                <input type="text" class="text input-large" name="address" value="{$info.address}">
-            </div>
-        </div>
-        <div class="form-item cf">
-            <div class="controls">
-                <label class="item-label">过期时间:<span class="check-tips"></span></label>
-                <input type="text" class="text time" name="expire_time" value="{$info.expire_time}">
-                <input type="hidden" name="id" value="{$info.mall_id}"/>
-            </div>
-        </div>
-
 		<div class="form-item cf">
 			<button class="btn submit-btn hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
-			<a class="btn btn-return" href="{:U('article/index?cate_id='.$cate_id)}">返 回</a>
+			<a class="btn btn-return" href="{:U('ad/index?cate_id='.$cate_id)}">返 回</a>
 		</div>
 	</form>
 	</div>
@@ -78,25 +80,8 @@
 <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script type="text/javascript">
-
 $('#submit').click(function(){
 	$('#form').submit();
-});
-
-$(function(){
-    $('.date').datetimepicker({
-        format: 'yyyy-mm-dd',
-        language:"zh-CN",
-        minView:2,
-        autoclose:true
-    });
-    $('.time').datetimepicker({
-        format: 'yyyy-mm-dd hh:ii',
-        language:"zh-CN",
-        minView:2,
-        autoclose:true
-    });
-    showTab();
 });
 </script>
 </block>

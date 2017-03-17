@@ -480,3 +480,7 @@ function output($data="",$tag="",$debug=true,$append=true,$call_back='json_encod
 function checkStr($str){
     return is_string($str)&&!empty($str);
 }
+
+function img_to_cdn($url){
+    return $url;
+}
