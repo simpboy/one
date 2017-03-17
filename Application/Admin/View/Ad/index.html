@@ -17,6 +17,21 @@
 		</div>
 
 		<!-- 高级搜索 -->
+		<div class="search-form fr cf">
+			<div class="drop-down">
+					<span id="sch-sort-txt" class="sort-txt" data="{$status}"><if condition="get_status_title($status) eq ''">所有<else/>{:get_status_title($status)}</if></span>
+					<i class="arrow arrow-down"></i>
+					<ul id="sub-sch-menu" class="nav-list hidden">
+						<volist name="position_list" id="name">
+							<li><a href="javascript:;" value="{$key}">{$name|msubstr=0,5,'utf-8',false}</a></li>
+						</volist>
+					</ul>
+			</div>
+			<div class="sleft">
+				<input type="text" name="nickname" class="search-input" value="{:I('nickname')}" placeholder="">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:U('index')}"><i class="btn-search"></i></a>
+			</div>
+		</div>
 	</div>
 
 	<!-- 数据表格 -->
@@ -92,12 +107,12 @@ $(function(){
 	//搜索功能
 	$("#search").click(function(){
 		var url = $(this).attr('url');
-		var status = $("#sch-sort-txt").attr("data");
+		var id = $("#sch-sort-txt").attr("data");
         var query  = $('.search-form').find('input').serialize();
         query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
         query = query.replace(/^&/g,'');
-		if(status != ''){
-			query = 'status=' + status + "&" + query;
+		if(id != ''){
+			query = 'id=' + id + "&" + query;
         }
         if( url.indexOf('?')>0 ){
             url += '&' + query;
