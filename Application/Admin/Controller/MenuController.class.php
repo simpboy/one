@@ -63,6 +63,7 @@ class MenuController extends AdminController {
                     //记录行为
                     action_log('update_menu', 'Menu', $id, UID);
                     $this->success('新增成功', Cookie('__forward__'));
+                    return ;
                 } else {
                     $this->error('新增失败');
                 }

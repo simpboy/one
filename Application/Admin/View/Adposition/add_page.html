@@ -3,42 +3,23 @@
 	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
 	<div class="main-title cf">
 		<h2>
-			<a href="{:U('Ad/add_page')}">添加广告</a>
+			<a href="{:U('Adposition/add_page')}">添加广告位</a>
 		</h2>
 	</div>
 	<!-- 标签页导航 -->
 <div class="tab-wrap">
 	<ul class="tab-nav nav">
-        <li class="current"><a href="{:U('Ad/add_page')}">添加广告</a></li>
-        <li ><a href="{:U('Ad/index')}">广告列表</a></li>
+        <li class="current"><a href="{:U('Adposition/add_page')}">添加广告位</a></li>
+        <li ><a href="{:U('Adposition/index')}">广告位列表</a></li>
 	</ul>
 	<div class="tab-content">
 	<!-- 表单 -->
-	<form id="form" action="{:U('Ad/add_page')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
+	<form id="form" action="{:U('Adposition/add_page')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="{$info.ad_id}"/>
         <div class="form-item cf">
             <div class="controls">
-                <label class="item-label">广告标题:<span class="check-tips"></span></label>
-                <input type="text" class="text input-large" name="title" value="{$info.title}">
-            </div>
-        </div>
-        <div class="form-item cf">
-            <div class="controls">
-                <label class="item-label">广告链接:<span class="check-tips"></span></label>
-                <input type="text" class="text input-large" name="url" value="{$info.url}">
-            </div>
-        </div>
-
-        <select name="position_id">
-            <volist name="position_list" id="vo">
-                <option value="{$vo.position_id}" <eq name="vo.position_id" value="info.position_id">selected</eq>>{$vo.name}</option>
-            </volist>
-        </select>
-
-        <div class="form-item cf">
-            <div class="controls">
-                <label class="item-label">显示顺序:<span class="check-tips"></span></label>
-                <input type="text" class="text input-large" name="display_order" value="{$info.display_order}">
+                <label class="item-label">广告位标题:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="name" value="{$info.name}">
             </div>
         </div>
         <div class="controls">
@@ -48,21 +29,6 @@
 
             <label for="online_1">上线</label>
             <input type="radio" class="radio" id="online_1" name="online" value="1" <eq name="info.online" value="1">checked=“checked”</eq> />
-        </div>
-
-        <div class="form-item cf">
-            <div class="controls">
-                <label class="item-label">图片:<span class="check-tips"></span></label>
-                <input type="file" name="img"/>
-            </div>
-            <div class="controls">
-                <notempty name="info.img">
-                    <a href="{$info.img}" target="_blank">
-                        <img src="{$info.img}" width="100"/>
-                        <input type="hidden" name="img_old" value="{$info.img}">
-                    </a>
-                </notempty>
-            </div>
         </div>
 		<div class="form-item cf">
 			<button class="btn submit-btn hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
