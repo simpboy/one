@@ -513,6 +513,8 @@ class AdminController extends Controller {
      *  可以通过url参数r指定每页数据条数,例如: index.html?r=5
      *
      *  可以联表查询
+     *  $join , $alias指定别名
+     * lists2($Order,$where,$order,$field=true, 'ngc_order_goods og on o.order_id=og.order_id',$alias='o');
      *
      *
      * @return array|false
