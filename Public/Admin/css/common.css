@@ -240,3 +240,8 @@ button.close {
 	vertical-align: middle;
 	margin-right: 5px
 }
+.tip{
+	display: inline;
+	color:#ff0000;
+	margin-left:5px;
+}

@@ -1,0 +1,1000 @@
+   56  cd redis-3.2.6
+   57  ls
+   58  ./make
+   59  make
+   60  make install
+   61  redis-server
+   62  redis --port 6379
+   63  redis-server --port 6379
+   64  redis-server --port 6379 &
+   65  ls
+   66  cp redis.conf  /etc/redis.conf
+   67  redis-server --help
+   68  vim /etc/redis.conf 
+   69  redis-server /etc/redis.conf 
+   70  ifconfig
+   71  service iptables stop
+   72  service
+   73  halt
+   74  set
+   75  setup
+   76  service sshd start
+   77  echo "<?php echo 'hello';?>" |php
+   78  echo "<?php $_test = 'nice to meet u'; function(){ static $_test = []; var_dump($_test);}?>" |php
+   79  echo "<?php $_test = 'nice to meet u'; function t(){ static $_test = []; var_dump($_test);} t();?>" |php
+   80  echo "<?php $_test = 'nice to meet u'; /*function t(){ static $_test = []; var_dump($_test);} t(); */?>" |php
+   81  echo "<?php $_test='nice to meet u'; /*function t(){ static $_test = []; var_dump($_test);} t(); */?>" |php
+   82  echo "<?php $_test='nice to meet u'; ?>" |php
+   83  echo "<?php $test='nice to meet u'; ?>" |php
+   84  echo "<?php $test="hi"; ?>" |php
+   85  echo "<?php echo 'a;'; ?>" |php
+   86  echo "<?php $t = 'a;'; ?>" |php
+   87  echo "<?php \$t = 'a;'; ?>" |php
+   88  echo "<?php \$t = 'a;'; echo $t ?>" |php
+   89  echo "<?php \$t = 'a;'; echo \$t; ?>" |php
+   90  echo "<?php $_\ttestnice to meet u'; /*function t(){ static $_\ttest = []; var_dump($_\ttest);} t(); */?>" |php
+   91  echo "<?php $_\ttestnice to meet u'; function t(){ static $_\ttest = []; var_dump($_\ttest);} t(); */?>" |php
+   92  echo "<?php $_\ttestnice to meet u'; function t(){ static \$_test = []; var_dump(\$_test);} t(); */?>" |php
+   93  echo "<?php \$_test='nice to meet u'; function t(){ static \$_test = []; var_dump(\$_test);} t(); */?>" |php
+   94  echo "<?php \$_test='nice to meet u'; function t(){ static \$_test = []; var_dump(\$_test);} t(); ?>" |php
+   95  ls
+   96  cd ..
+   97  ls
+   98  cd ~
+   99  ls
+  100  cd src
+  101  ls
+  102  vim i.php 
+  103  php -f i.php 
+  104  vim i.php 
+  105  php -f i.php 
+  106  vim i.php 
+  107  php -f i.php 
+  108  cd /usr/local/nginx/
+  109  ls
+  110  cd /data
+  111  ls
+  112  cd docs/
+  113  ls
+  114  cd onethink/
+  115  git status
+  116  cd ..
+  117  cd tp5/
+  118  ls
+  119  git add -A
+  120  git commit -m "20170105"
+  121  git push origin dev
+  122  service iptables stop
+  123  networt
+  124  set
+  125  ifconfig
+  126  redis-server /etc/redis.conf 
+  127  vim /etc/redis.conf 
+  128  redis -h 192.168.16.131 -p 6379
+  129  redis -v
+  130  redis
+  131  redis-cli -h 192.168.16.131 -p 6379
+  132  redis-cli -h 127.0.0.1 -p 6379
+  133  redis-cli -h 192.168.16.131 -p 6379
+  134  storm &
+  135  ls /data/docs
+  136  lnmp restart
+  137  vim /usr/local/nginx/conf/vhost/tp5.loc.conf 
+  138  lnmp restart
+  139  vim /usr/local/nginx/conf/vhost/tp5.loc.conf 
+  140  vim /usr/local/nginx/conf/other.conf 
+  141  vim /usr/local/nginx/conf/vhost/tp5.loc.conf 
+  142  cat /home/wwwlogs/tp5.loc.log
+  143  vim /usr/local/nginx/conf/vhost/tp5.loc.conf 
+  144  cat /home/wwwlogs/tp5.loc.log
+  145  /usr/local/nginx/sbin/nginx -t
+  146  vim /usr/local/nginx/conf/nginx.conf
+  147  ls -al /usr/local/nginx/conf/vhost/
+  148  vim /usr/local/nginx/conf/vhost/vhost.conf 
+  149  vim /usr/local/nginx/conf/vhost/tp5.loc.conf 
+  150  cat /home/wwwlogs/tp5.loc.log
+  151  /usr/local/nginx/sbin/nginx --help
+  152  /usr/local/nginx/sbin/nginx -h
+  153  /usr/local/nginx/sbin/nginx -g
+  154  /usr/local/nginx/sbin/nginx -g index.php/t
+  155  /usr/local/nginx/sbin/nginx -g index.php;
+  156  /usr/local/nginx/sbin/nginx -g i
+  157  /usr/local/nginx/sbin/nginx -g ;
+  158  /usr/local/nginx/sbin/nginx -g 
+  159  /usr/local/nginx/sbin/nginx -T
+  160  history |grep redis-cli
+  161  redis-cli -h 192.168.16.131 -p 6379
+  162  history |grep wget
+  163  cd /usr/local/src
+  164  ls
+  165  cd redis-3.2.6
+  166  ls
+  167  cd ..
+  168  ls
+  169  cd /root/src
+  170  ls
+  171  cd /home/s/src
+  172  ls
+  173  history |grep phpize
+  174  history |grep phpzie
+  175  redis-cli -h 192.168.16.131 -p 6379
+  176  vim /etc/redis.conf 
+  177  redis-server stop
+  178  redis-server --help
+  179  redis-cli -p 6379 shutdown
+  180  redis-server /etc/redis.conf 
+  181  ls
+  182  vim redis_init_script
+  183  ls
+  184  chmod +x redis_init_script 
+  185  ls
+  186  ./redis_init_script stop
+  187  vim redis_init_script
+  188  ./redis_init_script stop
+  189  ./redis_init_script start
+  190  vim redis_init_script
+  191  ./redis_init_script start
+  192  vim redis_init_script
+  193  ls
+  194  mkdir /etc/redis
+  195  mv /etc/redis.conf  /etc/redis/6379.conf
+  196  vim redis_init_script
+  197  ./redis_init_script start
+  198  vim redis_init_script
+  199  ./redis_init_script start
+  200  vim redis_init_script
+  201  vim /etc/redis/6379.conf 
+  202  sudo update-rc.d redis_6379 defaults
+  203  redis PING
+  204  redis-cli PING
+  205  cp redis_init_script /usr/local/bin/redis-init-script
+  206  cd /usr/local/
+  207  cd src
+  208  wget https://github.com/phpredis/phpredis.git
+  209  ls
+  210  cd phpredis.git 
+  211  rm phpredis.git -y
+  212  rm phpredis.git -rf
+  213  git clone https://github.com/phpredis/phpredis.git
+  214  ls
+  215  cd phpredis/
+  216  ls
+  217  phpize
+  218  ./configure 
+  219  make && make install
+  220  make
+  221  ./configure 
+  222  find / |grep php.ini
+  223  php -v
+  224  php --help
+  225  php --php i
+  226  php -i
+  227  php -i |grep php.ini
+  228  ./configure 
+  229  ./configure  --with-php-config=/usr/local/php/etc/php.ini
+  230  ./configure  --with-php-config=/usr/local/php/etc/
+  231  ./configure  --with-php-config=/usr/local/php/
+  232  find / |grep php-config$
+  233  ./configure  --with-php-config=/usr/localphp/bin/php-config
+  234  ./configure  --with-php-config=/usr/local/php/bin/php-config
+  235  /usr/local/bin/php-config
+  236  /usr/local/php/bin/php-config
+  237  /usr/local/php/bin/php-config --configure-options
+  238  make && make install
+  239  ls /usr/local/php/lib/php/extensions/no-debug-non-zts-20100525/
+  240  /usr/local/php/bin/php-config |grep php.ini
+  241  /usr/local/php/bin/php-config 
+  242  php -i |grep php.ini
+  243  vim /usr/local/php/etc/php.ini 
+  244  lnmp stop
+  245  lnmp start
+  246  php -i |grep redis
+  247  php -i |grep redis | -n
+  248  php -i |grep redis -n 10
+  249  php -i |grep redis
+  250  php -i 
+  251  php -i >php-i.txt
+  252  vim php-i.txt 
+  253  rm -rf php-i.txt 
+  254  vim /usr/local/nginx/
+  255  cd /usr/local/nginx/
+  256  ls
+  257  cd conf
+  258  ls
+  259  cd vhost/
+  260  ls
+  261  vim vhost.conf 
+  262  cd /data/
+  263  ls
+  264  cd doc
+  265  cd docs/
+  266  ls
+  267  mkdir tp5
+  268  cd tp5
+  269  ls
+  270  cp /home/s/Downloads/thinkphp_5.0.2_full.zip  ./
+  271  ls
+  272  unzip thinkphp_5.0.2_full.zip 
+  273  ls
+  274  rm thinkphp_5.0.2_full.zip  -rf
+  275  ls
+  276  vim /usr/local/nginx/conf/vhost/vhost.conf 
+  277  vim /etc/hosts
+  278  lnmp restart
+  279  cp think think.php
+  280  ping tp5.loc
+  281  vim /usr/local/nginx/conf/vhost/vhost.conf 
+  282  lnmp restart
+  283  lnmp --help
+  284  lnmp vhost list
+  285  lnmp vhost add
+  286  lnmp restart
+  287  vim lnmp
+  288  whereis lnmp
+  289  vim /bin/lnmp
+  290  vim /etc/init.d/php-fpm 
+  291  vim /etc/init.d/nginx 
+  292  vim /usr/local/nginx/conf/nginx.conf
+  293  vim /usr/local/nginx/conf/vhost/vhost.conf 
+  294  lnmp --help
+  295  lnmp vhost --list
+  296  lnmp vhost list
+  297  vim /usr/local/nginx/conf/vhost/vhost.conf 
+  298  lnmp restart
+  299  vim /usr/local/nginx/conf/vhost/tp5.loc.conf 
+  300  ping tp5.loc
+  301  mv think.php  index.php
+  302  vim index.php 
+  303  ls
+  304  rm index.php
+  305  ls
+  306  lnmp restart
+  307  vim /usr/local/nginx/conf/vhost/tp5.loc.conf 
+  308  lnmp restart
+  309  vim /usr/local/nginx/conf/vhost/tp5.loc.conf 
+  310  lnmp restart
+  311  vim /usr/local/nginx/conf/vhost/tp5.loc.conf 
+  312  lnmp restart
+  313  vim /usr/local/nginx/conf/vhost/tp5.loc.conf 
+  314  lnmp restart
+  315  git status
+  316  pwd
+  317  git init
+  318  git status
+  319  git add -A
+  320  git commit -m "redis 博客发布"
+  321  git remote -add orgin git@github.com:simpboy/learngit.git
+  322  git remote -v
+  323  git remote add origin git@github.com:simpboy/learngit.git
+  324  git remote -v
+  325  git branch -b dev
+  326  git branch -l
+  327  git branch dev
+  328  git branch
+  329  git branch -b dev
+  330  git checkout dev
+  331  git branch
+  332  git push origin dev
+  333  git pull origin dev
+  334  git push origin dev
+  335  git add -A
+  336  git commit -m "使用string存储"
+  337  git add -A
+  338  git status
+  339  git add -A
+  340  git commit -m "使用redis实现blog"
+  341  git push origin dev
+  342  ifconfig
+  343  service iptables stop
+  344  su s
+  345  whereis git
+  346  git 
+  347  git  -v
+  348  find / |grep git
+  349  find / |grep git$
+  350  yum remove git
+  351  yum install git
+  352  git -v
+  353  git --v
+  354  git --version
+  355  whereis git
+  356  sgit &
+  357  yum remove git
+  358  yum update git
+  359  yum remove git
+  360  unzip /home/s/Downloads/git-master.zip  -D /usr/local/src/
+  361  unzip --help
+  362  unzip /home/s/Downloads/git-master.zip  -po
+  363  unzip /home/s/Downloads/git-master.zip  -p
+  364  unzip /home/s/Downloads/git-master.zip -v
+  365  unzip -v /home/s/Downloads/git-master.zip
+  366  unzip
+  367  unzip /home/s/Downloads/git-master.zip
+  368  ls /home/s/Downloads/
+  369  ls
+  370  mv git-master/  /usr/local/src/
+  371  cd /usr/local/src/
+  372  ls
+  373  cd git-master/
+  374  ls
+  375  ./configure
+  376  ./make
+  377  make
+  378  make -lpthread
+  379  make
+  380  make install
+  381  make clear
+  382  ls
+  383  cd ..
+  384  ls
+  385  rm -rm git-master/
+  386  rm -rf git-master/
+  387  yum install git
+  388  yum --help
+  389  yum update git
+  390  uname -
+  391  uname 
+  392  uname -r
+  393  yum groupinstall “Development Tools”
+  394  yum install zlib-devel perl-ExtUtils-MakeMaker asciidoc xmlto openssl-devel
+  395  wget http://www.codemonkey.org.uk/projects/git-snapshots/git/git-latest.tar.xz
+  396  xz -d git-latest.tar.xz
+  397  tar -xvf git-latest.tar
+  398  cd git-2017-02-09/
+  399  ls
+  400  autoconf
+  401   ./configure && make && make install
+  402  git -v
+  403  git
+  404  ls
+  405  whereis git
+  406  /usr/local/bin/git
+  407  /usr/local/bin/git -v
+  408  /usr/local/bin/git -version
+  409  /usr/local/bin/git -V
+  410  /usr/local/bin/git --version
+  411  sgit &
+  412  git
+  413  lnmp start
+  414  lnmp restart
+  415  netstat -lp |grep mysqld
+  416  netstat -n |grep 3306
+  417  netstat -n |grep :3306
+  418  netstat -n
+  419  netstat -n |grep :80
+  420  lnmp restart
+  421  ifconfig
+  422  redis-server 
+  423  redis-server /etc/redis/6379.conf 
+  424  cd ~
+  425  ls
+  426  cd workspace/
+  427  ls
+  428  cd ..
+  429  ls
+  430  cd /data/
+  431  ls
+  432  cd docs/
+  433  ls
+  434  git clone svn://git.oschina.net/ypwl/TwoThink 
+  435  git clone git@git.oschina.net:ypwl/TwoThink.git
+  436  ls
+  437  cd tp5
+  438  ls
+  439  pwd
+  440  ls
+  441  git remote -vv
+  442  cd ..
+  443  ls
+  444  cd onethink/
+  445  ls
+  446  git status
+  447  git log
+  448  git status
+  449  git add -A
+  450  git commit -m "read"
+  451  git status
+  452  git log
+  453  git status
+  454  cd ..
+  455  ls
+  456  pwd
+  457  cd onethink/
+  458  ls
+  459  git add -A
+  460  git commit -m "read 2"
+  461  git status
+  462  git remote -vv
+  463  vim /usr/local/nginx/conf/vhost/tp5.loc.conf 
+  464  ls
+  465  pwd
+  466  cd ..
+  467  cd tp5
+  468  ls
+  469  git status
+  470  git add -m
+  471  git add -a
+  472  git add -A
+  473  git status
+  474  git commit -m "添加onethink模板"
+  475  git status
+  476  git
+  477  lnmp start
+  478  php-fpm start
+  479  php-fpm 
+  480  storm &
+  481  /usr/local/mysql/bin/mysql -uroot -p
+  482  sgit.sh &
+  483  sgit &
+  484  yum remove git
+  485  git
+  486  git version
+  487  pwd
+  488  rm -rf view
+  489  rm -rf vie
+  490  cd /data/docs/
+  491  ls
+  492  cd tp5/
+  493  git push origin dev
+  494  ifconfig
+  495  lnmp start
+  496  ifconfig
+  497  cd /usr/local/nginx/conf/vhost
+  498  ls
+  499  vim vhost.conf 
+  500  mv /data/docs/wwwroot/ /data/docs/one
+  501  ls
+  502  cd /data/docs/
+  503  ls
+  504  cd con
+  505  cd one
+  506  ls
+  507  cd Runtime/
+  508  ls
+  509  chmod 777 .
+  510  ls
+  511  cd ..
+  512  ls
+  513  chmod 777 Data/
+  514  cd Uploads/
+  515  ls
+  516  chmod 777 ./Download/
+  517  chmod 777 ./Picture/
+  518  chmod 777 ./Editor/
+  519  chmod 777 ../Application/User/Conf/
+  520  chmod 777 ../Application/Common/Conf/
+  521  ls
+  522  cd /data
+  523  ls
+  524  cd docs
+  525  ls
+  526  chown s:s one
+  527  ls -l one
+  528  ls -l .
+  529  chown -r s:s one
+  530  chown -R s:s one
+  531  ls one
+  532  ls one -l
+  533  cd one
+  534  ls
+  535  git init
+  536  git status
+  537  vim .gitignore
+  538  git statuas
+  539  git status
+  540  rm install.php 
+  541  rm -rf license.txt 
+  542  rm -rf readme.html 
+  543  ls
+  544  ls -al
+  545  git status
+  546  git add -A
+  547  git commit -m "初始化"
+  548  git status
+  549  git checkout -D dev
+  550  git checkout -b dev
+  551  git status
+  552  git remote add origin git@github.com:simpboy/one.git
+  553  git push origin dev
+  554  cd /data/
+  555  ls
+  556  cd docs
+  557  ls
+  558  unzip onethink.zip 
+  559  ls
+  560  rm README.md 
+  561  ls
+  562  cp wwwroot/ one
+  563  ls
+  564  vim /etc/hosts
+  565  find -name nginx.conf /
+  566  find / -name nginx.conf 
+  567  vim /usr/local/nginx/conf/nginx.conf
+  568  cd /usr/local/nginx/conf/
+  569  ls
+  570  cd vhost/
+  571  ls
+  572  vim vhost.conf 
+  573  lnmp restart
+  574  pwd
+  575  ls
+  576  cd ..
+  577  cd /usr/src
+  578  ls
+  579  wget http://mirrors.ustc.edu.cn/tdf/libreoffice/stable/5.3.0/rpm/x86_64/LibreOffice_5.3.0_Linux_x86-64_rpm.tar.gz
+  580  node -v
+  581  npm ls
+  582  npm search express
+  583  npm install express
+  584  npm -l
+  585  npm ls
+  586  node
+  587  ls
+  588  cat test.txt 
+  589  rm -rm test.txt 
+  590  rm test.txt 
+  591  ls
+  592  rm test.txt 
+  593  cd node_lianxi/
+  594  ls
+  595  echo 菜鸟教程官方网址:www.runobb.com > input.txt
+  596  ls
+  597  cat input.txt 
+  598  vim  main.js
+  599  node main.js 
+  600  vim main_async.js
+  601  node main_async.js 
+  602  vim main_async.js
+  603  node main_async.js 
+  604  cat main_async.js 
+  605  ls
+  606  php
+  607  jobs
+  608  jobs -l
+  609  vim observer.php
+  610  php observer.php 
+  611  vim observer.php
+  612  php observer.php 
+  613  vim observer.php
+  614  php observer.php 
+  615  vim observer.php
+  616  php observer.php 
+  617  vim observer.php
+  618  php observer.php 
+  619  vim observer.php
+  620  php observer.php 
+  621  vim observer.php
+  622  php observer.php 
+  623  vim observer.php
+  624  ls
+  625  cd src
+  626  ls
+  627  sudo git clone https://github.com/nodejs/node.git
+  628  git
+  629  git clone https://github.com/nodejs/node.git
+  630  wget http://nodejs.org/dist/v0.10.24/node-v0.10.24.tar.gz
+  631  ls
+  632  rm -rf node-v0.10.24.tar.gz 
+  633  ls
+  634  tar zxvf node-v0.10.24.tar.gz 
+  635  ls
+  636  cd node-v0.10.24
+  637  ls
+  638  ./configure 
+  639  make && make install
+  640  node -v
+  641  npm -v
+  642  ls
+  643  cd ..~
+  644  ls
+  645  cd ~
+  646  ls
+  647  cd src
+  648  ls
+  649  cd ..
+  650  ls
+  651  cd workspace/
+  652  ls
+  653  cd ..
+  654  ls
+  655  mkdir node_lianxi
+  656  vim server.js
+  657  node server.js
+  658  node server.js &
+  659  jobs
+  660  jobs -l
+  661  fg 1
+  662  ls
+  663  jobs
+  664  node server.js &
+  665  jobs
+  666  jobs -l
+  667  jobs
+  668  fg 1
+  669  jobs -l
+  670  bg %1
+  671  jobs -l
+  672  npm -v
+  673  npm install npm -g
+  674  jobs
+  675  fg %1
+  676  jobs 
+  677  jobs -l
+  678  node server.js 
+  679  jobs
+  680  bg %1
+  681  jobs -l
+  682  kill %1
+  683  jobs -l
+  684  bg %1
+  685  jobs -l
+  686  ls
+  687  mv server.js  node_lianxi/
+  688  cd node_lianxi/
+  689  ls
+  690  node server.js &
+  691  ps -aux |grep server.js
+  692  ps -aux |grep server.js |grep ^grep
+  693  ps -aux |grep server.js |grep "^grep"
+  694  ps -aux |grep server.js 
+  695  ps -aux 
+  696  ps -aux |grep "server.js"
+  697  ps aux |grep "server.js"
+  698  ps aux |grep "server.js" |grep -v "grep"
+  699  cnpm
+  700   npm install -g cnpm --registry=https://registry.npm.taobao.org
+  701  cnpm -v
+  702  cnpm
+  703   npm install -g cnpm --registry=https://registry.npm.taobao.org
+  704  cpm -v
+  705  cnpm -v
+  706  npm install npm -g
+  707  bg %2
+  708  jobs -l
+  709  storm &
+  710  whereis git
+  711  sgit &
+  712  cd /usr/local/src/
+  713  ls
+  714  cp /home/s/Downloads/jdk-8u121-linux-x64.tar.gz  ./
+  715  mkdir /usr/java
+  716  ls /usr/java
+  717  ls
+  718  ls /usr/java -al
+  719  mv jdk-8u121-linux-x64.tar.gz  /usr/java/
+  720  cd /usr/java
+  721  ls
+  722  tar zxvf jdk-8u121-linux-x64.tar.gz 
+  723  ls
+  724  vim /etc/profile
+  725  . /etc/profile
+  726  javac
+  727  java -version
+  728  echo $JAVA_HOME
+  729  echo $CLASSPATH
+  730  vim /etc/profile
+  731  echo $PATH
+  732  vim /etc/profile
+  733  sgit &
+  734  cd /usr/local/src
+  735  ls
+  736  cd glibc-2.14
+  737  cd build/
+  738  ls
+  739  ../configure --prefix=/opt/glibc-2.14
+  740  make && make install
+  741  make -j4 && make install
+  742  sgit &
+  743  cd /
+  744  yum install wireshark
+  745  yum search wireshark
+  746  yum install wireshark-gnome.x86_64
+  747  wireshark &
+  748  /data/docs/
+  749  ls
+  750  cd /data/docs/
+  751  ls
+  752  chown s:s .
+  753  ls
+  754  unzip mall20170302.zip 
+  755  ls
+  756  cd mall
+  757  ls
+  758  ls 
+  759  mv ../Page_name.txt ./
+  760  ls
+  761  chmod s:s ./*
+  762  chmod s:s *
+  763  chown s:s *
+  764  ls -al
+  765  cd ..
+  766  ls -al
+  767  chown s:s mall
+  768  vim  /usr/local/nginx/conf/vhost/vhost.conf 
+  769  ls -alh
+  770  rz
+  771  vim  /usr/local/nginx/conf/vhost/vhost.conf 
+  772  lnmp restart
+  773  vim /etc/hosts
+  774  ifconfig
+  775  vim  /usr/local/nginx/conf/vhost/vhost.conf 
+  776  lnmp restart
+  777  ifconfig
+  778  vim  /usr/local/nginx/conf/vhost/vhost.conf 
+  779  lnmp restart
+  780  vim  /usr/local/nginx/conf/vhost/vhost.conf 
+  781  lnmp restart
+  782  ls
+  783  cd mall
+  784  ls
+  785  ls -l
+  786  ls -al |grep *.html
+  787  ls -al |grep html
+  788  ls -al |grep html > test.txt
+  789  vim test.txt 
+  790  ls -al |grep html | awk '{print $1}'
+  791  ls -al |grep html | awk '{print $5}'
+  792  ls -al |grep html | awk '{print $6}'
+  793  ls -al |grep html | awk '{print $8}'
+  794  ls -al |grep html | awk '{print $10}'
+  795  ls -al |grep html | awk '{print $9}'
+  796  vim test.html
+  797  lnmp restart
+  798  ls
+  799  pwd
+  800  ls
+  801  cd ..
+  802  ls
+  803  chmod -R 777 Runtime/
+  804  cd Runtime/
+  805  ls
+  806  cd Cache/
+  807  ls
+  808  cd Admin
+  809  ls
+  810  git status
+  811  cd ..
+  812  ls
+  813  cd ..
+  814  ls
+  815  git status
+  816  git add -A
+  817  git commit -m "mall"
+  818  git push origin dev
+  819  git status
+  820  git add -U
+  821  git add -A
+  822  git commit -m "电商添加"
+  823  git push origin dev
+  824  git status
+  825  git add -A
+  826  git commit -m "列表"
+  827  git push origin dev
+  828  git branch
+  829  lnmp restart
+  830  git status
+  831  git add -A
+  832  git commit -m "增加上传图片，编辑器"
+  833  git push origin dev
+  834  chmod 777 Public/static/ueditor
+  835  chmod 777 Public/static/ueditor2
+  836  cd Public/static/ueditor2
+  837  ls
+  838  cd ..
+  839  ls
+  840  cd ueditor
+  841  ls
+  842  cd php
+  843  ls
+  844  cd ..
+  845  chmod -R 777 php
+  846  ls
+  847  cd php
+  848  ls
+  849  cd ..
+  850  cd ueditor2
+  851  ls
+  852  cd ..
+  853  ls
+  854  cd ueditor
+  855  cd ..
+  856  cd ueditor2
+  857  ls
+  858  mkdir php
+  859  chmod -R 777 php
+  860  cd ..
+  861  git add -u
+  862  git add -A
+  863  git status
+  864  git commit -m "编辑器上传"
+  865  git push origin dev
+  866  git status
+  867  git push origin dev
+  868  git pull orgin dev
+  869  git remote
+  870  git pull origin dev
+  871  mkdir -p /data/docs/oneUploads/Picture/ueditor/php/upload/image
+  872  ls
+  873  cd Uploads/
+  874  ls
+  875  cd editor/
+  876  ls
+  877  mkdir -p /data/docs/one/Uploads/Picture/ueditor/php/upload/image
+  878  ls
+  879  cd ..
+  880  ls
+  881  mv editor/ ueditor
+  882  ls
+  883  mkdir -p /data/docs/one/Uploads/Picture/ueditor/php/upload/image
+  884  cd ueditor/
+  885  ls
+  886  mkdir /data/docs/one/Uploads/Picture/ueditor/php/upload/image
+  887  cd /data/docs/one/Uploads/Picture/ueditor/php/upload/image
+  888  pwd
+  889  cd -
+  890  ls
+  891  pwd
+  892  cd Pi
+  893  cd ..
+  894  ls
+  895  cd Picture/
+  896  ls
+  897  cd ueditor/
+  898  ls
+  899  cd ..
+  900  chmod -R 777 ueditor/
+  901  cd ueditor/
+  902  ls
+  903  cd ..
+  904  ls
+  905  cd ueditor/
+  906  ls
+  907  cd php
+  908  ls
+  909  cd upload/
+  910  ls
+  911  cd image/
+  912  ls
+  913  ls -al
+  914  ls
+  915  cd ..
+  916  chmod -R 777 image/
+  917  ls
+  918  ls -al /data/docs/oneUploads/Picture/ueditor/php/upload/image
+  919  ls -al /data/docs/oneUploads/Picture/ueditor/php/upload/
+  920  chmod -R 777 /data/docs/oneUploads/Picture/ueditor/php/upload/
+  921  pwd
+  922  git status
+  923  cd ..
+  924  ls
+  925  cd ..
+  926  git status
+  927  git add -u
+  928  git status
+  929  git commit -m "商品"
+  930  git push origin dev
+  931  git status
+  932  git branch
+  933  git push origin dev
+  934  ping qingdan.img.iwala.net
+  935  ping qingdan.img.taowaitao.cn
+  936  git pull origin dev
+  937  git status
+  938  git add -A
+  939  git commit -m "sql"
+  940  git push origin dev
+  941  git pull origin dev
+  942  git status
+  943  git add -A
+  944  git commit -m "增加商品"
+  945  git push origin dev
+  946  git add -a
+  947  git add -A
+  948  git commit -m "title"
+  949  git push origin dev
+  950  git pull origin dev
+  951  chmod -R 777 ./Runtime/Logs/debug.txt 
+  952  git status
+  953  git add -u
+  954  git commit -m "列表；ajax-get"
+  955  git push origin dev
+  956  git status
+  957  git add -u
+  958  git commit -m "task"
+  959  git push origin dev
+  960  git status
+  961  git push origin dev
+  962  git status
+  963  git push origin dev
+  964  cd ..
+  965  cd  mall
+  966  git init
+  967  ls -al
+  968  cp ../one/.gitignore  ./
+  969  vim .gitignore 
+  970  git status
+  971  rm liebiao.html~
+  972  git status
+  973  git add -A
+  974  git commit -m "Html"
+  975  git remote add git@github.com:simpboy/Html.git
+  976  git remote add origin git@github.com:simpboy/Html.git
+  977  git push origin dev
+  978  git push origin master
+  979  git status
+  980  git push origin dev
+  981  git push origin master
+  982  git push origin dev
+  983  git push origin master
+  984  git remote -vv
+  985  git branch
+  986  git push origin master
+  987  history |grep conf
+  988  vim /usr/local/nginx/conf/vhost/vhost.conf 
+  989  lnmp restart
+  990  vim /usr/local/nginx/conf/vhost/vhost.conf 
+  991  lnmp restart
+  992  ifconfig
+  993  ls
+  994  cd ..
+  995  ls
+  996  cd wangxl
+  997  ls
+  998  lnmp restart
+  999  ifconfig
+ 1000  git pull origin dev
+ 1001  git pull origin master
+ 1002  git branch
+ 1003  git checkout dev
+ 1004  git checkout -b dev
+ 1005  git branch
+ 1006  git pull origin dev
+ 1007  git remote -vv
+ 1008  cd ..
+ 1009  git status
+ 1010  ls
+ 1011  cd wangxl
+ 1012  ls
+ 1013  cd ..
+ 1014  cd mall
+ 1015  ls
+ 1016  cd ..
+ 1017  ls
+ 1018  cd one
+ 1019  git status
+ 1020  git pull origin dev
+ 1021  ifconfig
+ 1022  git pull origin dev
+ 1023  git add -u
+ 1024  git status
+ 1025  git add -U
+ 1026  ls
+ 1027  git status
+ 1028  git staus
+ 1029  git status
+ 1030  git add -u
+ 1031  git commit -m "Sql"
+ 1032  git
+ 1033  git push origin dev
+ 1034  ]git status
+ 1035  git status
+ 1036  git pull origin dev
+ 1037  git status
+ 1038  docker version
+ 1039  curl -fsSL https://get.docker.com/ | sh
+ 1040  sudo yum remove docker                   docker-common                   container-selinux                   docker-selinux                   docker-engine
+ 1041  sudo yum install -y yum-utils
+ 1042  sudo yum-config-manager     --add-repo     https://download.docker.com/linux/centos/docker-ce.repo
+ 1043  sudo yum-config-manager --enable docker-ce-edge
+ 1044  sudo yum makecache fast
+ 1045  sudo yum install docker-ce
+ 1046  yum list docker-ce.x86_64  --showduplicates |sort -r
+ 1047  sudo yum install docker-ce.x86_64
+ 1048  sudo yum install docker-ce.x86_64  --skip-broken
+ 1049  sudo systemctl start docker
+ 1050  yum install systemctl
+ 1051  sudo docker run hello-world
+ 1052  curl -fsSL https://get.docker.com/ | sh
+ 1053  history
+ 1054  history | vim
+ 1055  history > test | vim

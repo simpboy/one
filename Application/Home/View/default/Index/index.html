@@ -97,21 +97,13 @@
 	<!-- swiper -->
 	<div class="swiper-container swiperBox">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<a href="#">
-					<img src="__PUBLIC__/static/mall/images/del/11.jpg" alt="">
-				</a>
-			</div>
-			<div class="swiper-slide">
-				<a href="#">
-					<img src="__PUBLIC__/static/mall/images/del/22.jpg" alt="">
-				</a>
-			</div>
-			<div class="swiper-slide">
-				<a href="#">
-					<img src="__PUBLIC__/static/mall/images/del/33.jpg" alt="">
-				</a>
-			</div>
+			<volist name="ad_list" id="ad">
+				<div class="swiper-slide">
+					<a target="_blank" href="{$ad.url}">
+						<img src="{$ad.img}" alt="{$ad.title}">
+					</a>
+				</div>
+			</volist>
 		</div>
 		<div class="swiper-pagination"></div>
 	</div>
@@ -142,126 +134,20 @@
 	<div class="showProduct">
 		<h2 class="title">推荐商品</h2>
 		<ul class="list">
-			<li class="item">
-				<a href="#">
-					<div class="img">
-						<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-					</div>
-					<h4>超级新鲜的水果，大草莓哦</h4>
-					<div class="price">
-						<p>￥46.00</p>
-						<span>￥85.00</span>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a href="#">
-					<div class="img">
-						<img src="__PUBLIC__/static/mall/images/del/2.jpg" alt="">
-					</div>
-					<h4>橙光闪闪，这就是让人垂涎三尺的西红柿</h4>
-					<div class="price">
-						<p>￥46.00</p>
-						<span>￥85.00</span>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a href="#">
-					<div class="img">
-						<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-					</div>
-					<h4>超级新鲜的水果，大草莓哦</h4>
-					<div class="price">
-						<p>￥46.00</p>
-						<span>￥85.00</span>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a href="#">
-					<div class="img">
-						<img src="__PUBLIC__/static/mall/images/del/2.jpg" alt="">
-					</div>
-					<h4>橙光闪闪，这就是让人垂涎三尺的西红柿</h4>
-					<div class="price">
-						<p>￥46.00</p>
-						<span>￥85.00</span>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a href="#">
-					<div class="img">
-						<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-					</div>
-					<h4>超级新鲜的水果，大草莓哦</h4>
-					<div class="price">
-						<p>￥46.00</p>
-						<span>￥85.00</span>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a href="#">
-					<div class="img">
-						<img src="__PUBLIC__/static/mall/images/del/2.jpg" alt="">
-					</div>
-					<h4>橙光闪闪，这就是让人垂涎三尺的西红柿</h4>
-					<div class="price">
-						<p>￥46.00</p>
-						<span>￥85.00</span>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a href="#">
-					<div class="img">
-						<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-					</div>
-					<h4>超级新鲜的水果，大草莓哦</h4>
-					<div class="price">
-						<p>￥46.00</p>
-						<span>￥85.00</span>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a href="#">
-					<div class="img">
-						<img src="__PUBLIC__/static/mall/images/del/2.jpg" alt="">
-					</div>
-					<h4>橙光闪闪，这就是让人垂涎三尺的西红柿</h4>
-					<div class="price">
-						<p>￥46.00</p>
-						<span>￥85.00</span>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a href="#">
-					<div class="img">
-						<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-					</div>
-					<h4>超级新鲜的水果，大草莓哦</h4>
-					<div class="price">
-						<p>￥46.00</p>
-						<span>￥85.00</span>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a href="#">
-					<div class="img">
-						<img src="__PUBLIC__/static/mall/images/del/2.jpg" alt="">
-					</div>
-					<h4>橙光闪闪，这就是让人垂涎三尺的西红柿</h4>
-					<div class="price">
-						<p>￥46.00</p>
-						<span>￥85.00</span>
-					</div>
-				</a>
-			</li>
+			<volist name="goods_list" id="goods">
+				<li class="item">
+					<a target="_blank" href="{:U('goods/detail',['id'=>$goods['goods_id']])}">
+						<div class="img">
+							<img src="{$goods.main_img}" width="290" height="200" alt="{$goods.sub_title}">
+						</div>
+						<h4>{$goods.title}</h4>
+						<div class="price">
+							<p>￥{$goods.price}</p>
+							<span>￥{$goods.org_price}</span>
+						</div>
+					</a>
+				</li>
+			</volist>
 		</ul>
 		<div class="loading">加载中...</div>
 	</div>

@@ -39,6 +39,7 @@
             <div class="controls">
                 <label class="item-label">显示顺序:<span class="check-tips"></span></label>
                 <input type="text" class="text input-large" name="display_order" value="{$info.display_order}">
+                <span class="tip">数值越大越靠前(desc)</span>
             </div>
         </div>
         <div class="controls">
@@ -53,7 +54,7 @@
         <div class="form-item cf">
             <div class="controls">
                 <label class="item-label">图片:<span class="check-tips"></span></label>
-                <input type="file" name="img"/>
+                <input type="file" name="img"/>  <span class="tip">图片尺寸:640*320</span>
             </div>
             <div class="controls">
                 <notempty name="info.img">
@@ -63,6 +64,7 @@
                     </a>
                 </notempty>
             </div>
+
         </div>
 		<div class="form-item cf">
 			<button class="btn submit-btn hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>

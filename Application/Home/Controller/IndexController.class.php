@@ -22,14 +22,34 @@ class IndexController extends HomeController {
 //        $Mall = M('mall','ngc_');
 //        var_dump($Mall);
 
+        $Ad_ad = M('ad_ad','ngc_');
+        $ad_list = $Ad_ad->where(['position_id'=>1,'status'=>1,'online'=>1])->order("display_order desc")->select();
+        /**
+         *  `del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-未删除，1-删除',
+         *  `online` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-上线，-1下线',
+         *  `state` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否可以预定或购买；0可以，-1不可以',
+         *  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为正常数据；-1不是正常数据',
+         */
+        $Goods = M('goods','ngc_');
+        $where = [
+            'del'   => 0,
+            'online'    => 0,
+            'state'     => ['in',[0,-1]],
+            'status'    => 0
+        ];
+        $order = "sell_number desc,update_time desc";
+        $goods_list = $Goods->where($where)->order($order)->limit(30)->select();
+
         $category = D('Category')->getTree();
         $lists    = D('Document')->lists(null);
+
 
         $this->assign('category',$category);//栏目
         $this->assign('lists',$lists);//列表
         $this->assign('page',D('Document')->page);//分页
 
-                 
+        $this->assign('goods_list',$goods_list);
+        $this->assign('ad_list',$ad_list);
         $this->display();
     }
 
