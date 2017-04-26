@@ -484,3 +484,13 @@ function checkStr($str){
 function img_to_cdn($url){
     return $url;
 }
+
+/**
+ * 将$value插入到$pos位置
+ */
+function insert_array(&$insert,$value,$pos){
+    $start_pos 		= array_slice($insert,0,$pos-1);
+    $pos_end 		= array_slice($insert,$pos-1);
+    $start_pos[] 	= $value;
+    $insert 		= array_merge($start_pos,$pos_end);
+}
