@@ -28,6 +28,8 @@ class GoodsController extends AdminController {
             $online         = I("post.online",0,'intval');
             $state          = I("post.state",0,'intval');
 
+            $org_price      = I("post.org_price",0,'trim');
+
             //详情字段
             $origin         = I("post.origin",'','trim');
             $weight         = I("post.weight",'','trim');
@@ -68,6 +70,7 @@ class GoodsController extends AdminController {
                 'title'             => $title,
                 'sub_title'         => $sub_title,
                 'price'             => $price,
+                'org_price'         => $org_price,
                 'postage'           => $postage,
                 'main_img'          => $main_img,
                 'imgs'              => json_encode($imgs),
@@ -165,6 +168,24 @@ class GoodsController extends AdminController {
         $state = $Goods->where(['goods_id'=>$id])->getField('state');
         $data = [
             'state' => abs($state)-1
+        ];
+        $res = $Goods->where(['goods_id'=>$id])->save($data);
+        if($res!==false){
+            $this->success("操作成功");
+        }else{
+            $this->error("操作失败");
+        }
+    }
+    /*
+     * 更改促销状态
+     */
+    public function switch_promotion()
+    {
+        $id = I('get.id');
+        $Goods = M('goods','ngc_');
+        $state = $Goods->where(['goods_id'=>$id])->getField('promotion');
+        $data = [
+            'promotion' => abs(abs($state)-1)
         ];
         $res = $Goods->where(['goods_id'=>$id])->save($data);
         if($res!==false){

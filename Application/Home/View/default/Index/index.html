@@ -143,7 +143,9 @@
 						<h4>{$goods.title}</h4>
 						<div class="price">
 							<p>￥{$goods.price}</p>
-							<span>￥{$goods.org_price}</span>
+							<neq name="goods.org_price" value="0">
+								<span>￥{$goods.org_price}</span>
+							</neq>
 						</div>
 					</a>
 				</li>
