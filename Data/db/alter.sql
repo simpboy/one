@@ -40,3 +40,7 @@ CREATE TABLE `ngc_ad_ad` (
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1正常数据，-1异常数据',
   PRIMARY KEY (`ad_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='广告表';
+
+
+alrter table `ngc_goods` add column `org_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '商品原价';
+alrter table `ngc_goods` add column `promotion` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否促销；0-否，1-促销';
