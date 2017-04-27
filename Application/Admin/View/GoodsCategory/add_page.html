@@ -1,0 +1,133 @@
+<extend name="Public/base" />
+
+<block name="body">
+    <style type="text/css">
+        .img_list{float:left; text-align: center; margin-right:2px;}
+        .img_list .del_img{color:#2d7200; cursor:pointer; padding:5px;}
+    </style>
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<div class="main-title cf">
+		<h2>
+			<a href="{:U('goods/add_page')}">添加商品分类</a>
+		</h2>
+	</div>
+	<!-- 标签页导航 -->
+    <!--
+
+
+    `cate_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '分类ID',
+  `cate_name` varchar(200) NOT NULL DEFAULT '' COMMENT '分类名称',
+  `description` text NOT NULL COMMENT '描述',
+  `img` varchar(255) NOT NULL DEFAULT '' COMMENT '分类图片',
+  `parent_id` int(10) NOT NULL DEFAULT '0' COMMENT '父级分类id',
+  `display_order` int(5) NOT NULL DEFAULT '0' COMMENT '展示顺序desc',
+  `goods_number` int(10) NOT NULL DEFAULT '0' COMMENT '分类的商品数量',
+  `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间；',
+  `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为异常数据；0-正常，-1-异常',
+  `online` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1-上线；0-下线',
+  -->
+<div class="tab-wrap">
+	<ul class="tab-nav nav">
+        <li class="current"><a href="{:U($_controller.'/add_page')}">添加商品分类</a></li>
+        <li ><a href="{:U($_controller.'/index')}">商品分类列表</a></li>
+	</ul>
+	<div class="tab-content">
+	<!-- 表单 -->
+	<form id="form" action="{:U($_controller.'/add_page')}" class="form-horizontal" method="POST" enctype="multipart/form-data">
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">父分类ID:<span class="check-tips"></span></label>
+                <input type="text" class="text input-large" name="parent_id" placeholder="父分类ID" value="{$parent_id|intval}"> <span class="tip">{$parent_name}</span>
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">分类名称:<span class="check-tips">*</span></label>
+                <input type="text" class="text input-large" name="cate_name" value="{$info.cate_name}">
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">描述:<span class="check-tips"></span></label>
+                {:W('Taginput/editor',array(array('input_name'=>'description','server_url'=>$server_url,'content'=>$info['description'])))}
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">主图:<span class="check-tips">*</span></label>
+                <input type="file" name="img"/>
+                <span class="tip">图片比例:290*200</span>
+            </div>
+            <div class="controls">
+                <notempty name="info.img">
+                    <a href="{$info.img}" target="_blank">
+                        <img src="{$info.img}" width="100"/>
+                        <input type="hidden" name="img_old" value="{$info.img}">
+                    </a>
+                </notempty>
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <label class="item-label">上线:<span class="check-tips"></span></label>
+                <label for="online_1">上线</label>
+                <input type="radio" class="radio" id="online_1" name="online"value="1"  <eq name="info.online" value="1">checked=“checked”</eq> <empty name="info.online">checked=“checked”</empty> />
+
+                <label for="online_0">下线</label>
+                <input type="radio" class="radio" id="online_0" name="online" value="0" <eq name="info.online" value="0">checked=“checked”</eq> />
+            </div>
+        </div>
+        <div class="form-item cf">
+            <div class="controls">
+                <input type="hidden" name="id" value="{$info.cate_id}"/>
+            </div>
+        </div>
+
+		<div class="form-item cf">
+			<button class="btn submit-btn hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+			<a class="btn btn-return" href="{:U('goods/add_page')}">返 回</a>
+		</div>
+	</form>
+	</div>
+</div>
+</block>
+
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+
+$('#submit').click(function(){
+	$('#form').submit();
+});
+
+$(function(){
+    $('.date').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+    $('.time').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+    showTab();
+
+    $('.controls').on('click','.del_img',function () {
+        $(this).parent().remove();
+    });
+    $(document).on('click','.up_img_btn',function () {
+        var up_img = $(this).parent().clone();
+        $(up_img).filter('input').val('');
+        $(this).parent().parent().append(up_img);
+    })
+});
+</script>
+</block>

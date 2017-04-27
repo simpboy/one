@@ -1,6 +1,6 @@
 <?php
 /**
- * 店商管理
+ * 商品管理
  */
 namespace Admin\Controller;
 use Common\Controller;
@@ -25,8 +25,8 @@ class GoodsController extends AdminController {
             $imgs_old       = I("post.imgs_old",'','trim');
             $stock          = I("post.stock",0,'intval');
             $sell_reserve   = I("post.sell_reserve",0,'intval');
-            $online         = I("post.online",0,'intval');
-            $state          = I("post.state",0,'intval');
+            $online         = I("post.online",1,'intval');
+            $state          = I("post.state",1,'intval');
 
             $org_price      = I("post.org_price",0,'trim');
 
@@ -149,7 +149,7 @@ class GoodsController extends AdminController {
         $Goods = M('goods','ngc_');
         $online = $Goods->where(['goods_id'=>$id])->getField('online');
         $data = [
-            'online' => abs($online)-1
+            'online' => abs(abs($online)-1)
         ];
         $res = $Goods->where(['goods_id'=>$id])->save($data);
         if($res!==false){
@@ -167,7 +167,7 @@ class GoodsController extends AdminController {
         $Goods = M('goods','ngc_');
         $state = $Goods->where(['goods_id'=>$id])->getField('state');
         $data = [
-            'state' => abs($state)-1
+            'state' => abs(abs($state)-1)
         ];
         $res = $Goods->where(['goods_id'=>$id])->save($data);
         if($res!==false){

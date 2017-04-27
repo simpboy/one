@@ -33,8 +33,8 @@ class IndexController extends HomeController {
         $Goods = M('goods','ngc_');
         $where = [
             'del'   => 0,
-            'online'    => 0,
-            'state'     => ['in',[0,-1]],
+            'online'    => 1,
+            'state'     => ['in',[1]],
             'status'    => 0
         ];
         $order = "sell_number desc,update_time desc";

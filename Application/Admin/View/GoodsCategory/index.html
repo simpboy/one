@@ -4,15 +4,15 @@
 	<!-- 标题 -->
 	<div class="main-title">
 		<h2>
-			商品列表({$_total})
+			商品分类列表({$_total})
 		</h2>
 	</div>
 
 	<!-- 按钮工具栏 -->
 	<div class="cf">
 		<ul class="tab-nav nav">
-			<li ><a href="{:U('goods/add_page')}">添加商品</a></li>
-			<li class="current"><a href="{:U('goods/index')}">商品列表</a></li>
+			<li ><a href="{:U('goods/add_page')}">添加商品分类</a></li>
+			<li class="current"><a href="{:U('goods/index')}">商品分类列表</a></li>
 		</ul>
 		<div class="fl">
             <!--button class="btn ajax-post" target-form="ids" url="{:U("Mall/setState",array("status"=>1))}">启 用</button>
@@ -56,7 +56,6 @@
             </div-->
 		</div>
 	</div>
-
 	<!-- 数据表格 -->
     <div class="data-table">
 		<table>
@@ -66,18 +65,13 @@
                     <th class="row-selected row-selected">
                         <input class="check-all" type="checkbox">
                     </th>
-					<th>ID</th>
-					<th>商品名称</th>
-					<th>主图</th>
-					<th>价格</th>
-					<th>原价</th>
-					<th>邮费</th>
-					<th>库存</th>
-					<th>售出数量</th>
-					<th>销售/预定</th>
-					<th>可以上线</th>
-					<th>可以下单</th>
-					<th>促销/不促</th>
+					<th>CateID</th>
+					<th>分类名称</th>
+					<th>分类图片</th>
+					<th>上下线</th>
+					<th>商品数量</th>
+					<th>父分类</th>
+					<th>更新时间</th>
 					<th>创建时间</th>
 					<th>操作</th>
                 </tr>
@@ -88,23 +82,12 @@
                 <volist name="_list" id="vo">
                     <tr>
                         <td><input class="ids" type="checkbox" value="{$vo['goods_id']}" name="ids[]"></td>
-                        <td>{$vo.goods_id}</td>
-						<td>{$vo.title}</td>
+                        <td>{$vo.cate_id}</td>
+						<td>{$vo.cate_name}</td>
 						<td>
-							<a href="{$vo.main_img}" target="_blank">
-								<img width="40" src="{$vo.main_img}"/>
+							<a href="{$vo.img}" target="_blank">
+								<img width="40" src="{$vo.img}"/>
 							</a>
-						</td>
-						<td>{$vo.price}</td>
-						<td>{$vo.org_price}</td>
-						<td>{$vo.postage}</td>
-						<td>{$vo.stock}</td>
-						<td>{$vo.sell_number}</td>
-						<td>
-							<switch name="vo.sell_reserve">
-								<case value="0">销售</case>
-								<case value="1"><span style="color:#ff0000;">预订</span></case>
-							</switch>
 						</td>
 						<td>
 							<switch name="vo.online">
@@ -112,34 +95,19 @@
 								<case value="0"><span style="color:#ff0000;">下线</span></case>
 							</switch>
 						</td>
-						<td>
-							<switch name="vo.state">
-								<case value="0">不可下单</case>
-								<case value="1"><span style="color:#ff0000;">可下单</span></case>
-							</switch>
-						</td>
-						<td>
-							<switch name="vo.promotion">
-								<case value="1"><span style="color:#ff0000;">促销</span></case>
-								<case value="0">不促</case>
-							</switch>
-						</td>
+						<td>{$vo.goods_number}</td>
+						<td class="{$vo.parent_id}">{$vo.parent_name}</td>
+						<td>{$vo.update_time|date='Y-m-d H:i',###}</td>
 						<td>{$vo.create_time|date='Y-m-d H:i',###}</td>
 						<td>
-							<a href="{:U('Goods/add_page',['id'=>$vo['goods_id']])}" target="_blank">编辑</a>&nbsp;|&nbsp;
+							<a href="{:U($_controller.'/add_page',['id'=>$vo['cate_id']])}" target="_blank">编辑</a>&nbsp;|&nbsp;
 							<switch name="vo.online">
-								<case value="0"> <a  href="{:U('Goods/on_off_online',['id'=>$vo['goods_id']])}">上线</a></case>
-								<case value="1"><a  href="{:U('Goods/on_off_online',['id'=>$vo['goods_id']])}">下线</a></case>
+								<case value="0"> <a  href="{:U($_controller.'/on_off_online',['id'=>$vo['cate_id']])}">上线</a></case>
+								<case value="1"><a  href="{:U($_controller.'/on_off_online',['id'=>$vo['cate_id']])}">下线</a></case>
 							</switch>&nbsp;|&nbsp;
-							<switch name="vo.state">
-								<case value="0"> <a  href="{:U('Goods/on_off_state',['id'=>$vo['goods_id']])}">可以下单</a></case>
-								<case value="1"><a  href="{:U('Goods/on_off_state',['id'=>$vo['goods_id']])}">不可下单</a></case>
-							</switch>&nbsp;|&nbsp;
-							<switch name="vo.promotion">
-								<case value="0"> <a  href="{:U('Goods/switch_promotion',['id'=>$vo['goods_id']])}">促销</a></case>
-								<case value="1"><a  href="{:U('Goods/switch_promotion',['id'=>$vo['goods_id']])}">不促</a></case>
-							</switch>&nbsp;|&nbsp;
-							<a  class="ajax-get" href="{:U('Goods/del',['id'=>$vo['goods_id']])}">删除</a>&nbsp;&nbsp;
+							<a href="{:U($_controller.'/del',['id'=>$vo['cate_id']])}">删除</a>&nbsp;|&nbsp;
+							<a  href="{:U($_controller.'/add_page',['parent_id'=>$vo['cate_id']])}">添加子分类</a>&nbsp;&nbsp;
+
 						</td>
                     </tr>
                 </volist>
