@@ -40,14 +40,6 @@ class IndexController extends HomeController {
         $order = "sell_number desc,update_time desc";
         $goods_list = $Goods->where($where)->order($order)->limit(30)->select();
 
-        $category = D('Category')->getTree();
-        $lists    = D('Document')->lists(null);
-
-
-        $this->assign('category',$category);//栏目
-        $this->assign('lists',$lists);//列表
-        $this->assign('page',D('Document')->page);//分页
-
         $this->assign('goods_list',$goods_list);
         $this->assign('ad_list',$ad_list);
         $this->display();
