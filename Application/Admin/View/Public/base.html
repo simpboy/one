@@ -60,8 +60,12 @@
                         <notempty name="key"><h3><i class="icon icon-unfold"></i>{$key}</h3></notempty>
                         <ul class="side-sub-menu">
                             <volist name="sub_menu" id="menu">
-                                <li>
-                                    <a class="item" href="{$menu.url|U}">{$menu.title}</a>
+                                <eq name='menu.class' value='current'>
+                                    <li class="current">
+                                 <else/>
+                                    <li>
+                                </eq>
+                                    <a class="item"  href="{$menu.url|U}">{$menu.title}</a>
                                 </li>
                             </volist>
                         </ul>

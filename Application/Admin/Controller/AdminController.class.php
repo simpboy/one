@@ -257,7 +257,8 @@ class AdminController extends Controller {
             }
 
             // 查找当前子菜单
-            $pid = M('Menu')->where("pid !=0 AND url like '%{$controller}/".ACTION_NAME."%'")->getField('pid');
+            $current_nav    = M('Menu')->where("pid !=0 AND url like '%{$controller}/".ACTION_NAME."%'")->find();
+            $pid            = $current_nav['pid'];
             if($pid){
                 // 查找当前主菜单
                 $nav =  M('Menu')->find($pid);
@@ -309,6 +310,21 @@ class AdminController extends Controller {
                                 $map['is_dev']  =   0;
                             }
                             $menuList = M('Menu')->where($map)->field('id,pid,title,url,tip')->order('sort asc')->select();
+
+                            if($current_nav['hide']==1){
+                               foreach($menuList as &$value){
+                                    if($value['id']==$current_nav['pid']){
+                                        $value['class'] = 'current';
+                                    }
+                               }
+                            }else{
+                                foreach($menuList as &$value){
+                                    if($value['id']==$current_nav['id']){
+                                        $value['class'] = 'current';
+                                    }
+                                }
+                            }
+
                             $menus['child'][$g] = list_to_tree($menuList, 'id', 'pid', 'operater', $item['id']);
                         }
                     }
