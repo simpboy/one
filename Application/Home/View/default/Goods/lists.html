@@ -98,41 +98,15 @@
 				<p>全部分类</p>
 			</div>
 			<ul class="list">
+				<volist name="root_category" id="category">
 				<li>
 					<a href="#">
 						<span>&#xe620;</span>
-						<p>新上宝贝</p>
+							<p>{$category.cate_name}</p>
 						<b>&#xe694;</b>
 					</a>
 				</li>
-				<li>
-					<a href="#">
-						<span>&#xe620;</span>
-						<p>新上宝贝</p>
-						<b>&#xe694;</b>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<span>&#xe620;</span>
-						<p>新上宝贝</p>
-						<b>&#xe694;</b>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<span>&#xe620;</span>
-						<p>新上宝贝</p>
-						<b>&#xe694;</b>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<span>&#xe620;</span>
-						<p>新上宝贝</p>
-						<b>&#xe694;</b>
-					</a>
-				</li>
+				</volist>
 			</ul>
 		</div>
 		<!-- 子菜单 -->
@@ -161,126 +135,22 @@
 		<!-- 推荐商品 -->
 		<div class="showProduct">
 			<ul class="list">
+				<volist name="goods_list" id="goods">
 				<li class="item">
-					<a href="#">
+					<a  href="{:U('goods/detail',['id'=>$goods['goods_id']])}">
 						<div class="img">
-							<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
+							<img src="{$goods.main_img}" width="290" height="200" alt="{$goods.sub_title}">
 						</div>
-						<h4>超级新鲜的水果，大草莓哦</h4>
+						<h4>{$goods.title}</h4>
 						<div class="price">
-							<p>￥46.00</p>
-							<span>￥85.00</span>
+							<p>￥{$goods.price}</p>
+							<neq name="goods.org_price" value="0">
+								<span>￥{$goods.org_price}</span>
+							</neq>
 						</div>
 					</a>
 				</li>
-				<li class="item">
-					<a href="#">
-						<div class="img">
-							<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-						</div>
-						<h4>橙光闪闪，这就是让人垂涎三尺的西红柿</h4>
-						<div class="price">
-							<p>￥46.00</p>
-							<span>￥85.00</span>
-						</div>
-					</a>
-				</li>
-				<li class="item">
-					<a href="#">
-						<div class="img">
-							<img src="images/del/1.jpg" alt="">
-						</div>
-						<h4>超级新鲜的水果，大草莓哦</h4>
-						<div class="price">
-							<p>￥46.00</p>
-							<span>￥85.00</span>
-						</div>
-					</a>
-				</li>
-				<li class="item">
-					<a href="#">
-						<div class="img">
-							<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-						</div>
-						<h4>橙光闪闪，这就是让人垂涎三尺的西红柿</h4>
-						<div class="price">
-							<p>￥46.00</p>
-							<span>￥85.00</span>
-						</div>
-					</a>
-				</li>
-				<li class="item">
-					<a href="#">
-						<div class="img">
-							<img src="images/del/1.jpg" alt="">
-						</div>
-						<h4>超级新鲜的水果，大草莓哦</h4>
-						<div class="price">
-							<p>￥46.00</p>
-							<span>￥85.00</span>
-						</div>
-					</a>
-				</li>
-				<li class="item">
-					<a href="#">
-						<div class="img">
-							<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-						</div>
-						<h4>橙光闪闪，这就是让人垂涎三尺的西红柿</h4>
-						<div class="price">
-							<p>￥46.00</p>
-							<span>￥85.00</span>
-						</div>
-					</a>
-				</li>
-				<li class="item">
-					<a href="#">
-						<div class="img">
-							<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-						</div>
-						<h4>超级新鲜的水果，大草莓哦</h4>
-						<div class="price">
-							<p>￥46.00</p>
-							<span>￥85.00</span>
-						</div>
-					</a>
-				</li>
-				<li class="item">
-					<a href="#">
-						<div class="img">
-							<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-						</div>
-						<h4>橙光闪闪，这就是让人垂涎三尺的西红柿</h4>
-						<div class="price">
-							<p>￥46.00</p>
-							<span>￥85.00</span>
-						</div>
-					</a>
-				</li>
-				<li class="item">
-					<a href="#">
-						<div class="img">
-							<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-						</div>
-						<h4>超级新鲜的水果，大草莓哦</h4>
-						<div class="price">
-							<p>￥46.00</p>
-							<span>￥85.00</span>
-						</div>
-					</a>
-				</li>
-				<li class="item">
-					<a href="#">
-						<div class="img">
-							<img src="__PUBLIC__/static/mall/images/del/1.jpg" alt="">
-						</div>
-						<h4>橙光闪闪，这就是让人垂涎三尺的西红柿</h4>
-						<div class="price">
-							<p>￥46.00</p>
-							<span>￥85.00</span>
-						</div>
-					</a>
-				</li>
+				</volist>
 			</ul>
 			<div class="loading">加载中...</div>
 		</div>
@@ -321,9 +191,9 @@
 			</ul>
 		</div>
 	</div>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/swiper.jquery.min.js"></script>
-	<script src="js/common.js"></script>
+	<script src="__PUBLIC__/static/mall/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/static/mall/js/swiper.jquery.min.js"></script>
+	<script src="__PUBLIC__/static/mall/js/common.js"></script>
 	<script>
 		/*
 		 * 子菜单
