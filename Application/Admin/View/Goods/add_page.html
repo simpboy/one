@@ -37,6 +37,12 @@
                 <label class="item-label">分类:<span class="check-tips">*</span></label>
                 <input type="text" class="text input-large" name="title" value="{$info.cate_id}">
             </div>
+            <div class="controls">
+                <volist name="root_category" id="cate">
+                    <input type="checkbox" value="{$cate.cate_id}"/>
+                    <span>{$cate.cate_name}</span>
+                </volist>
+            </div>
         </div>
         <div class="form-item cf">
             <div class="controls">

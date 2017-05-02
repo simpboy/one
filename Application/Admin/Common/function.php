@@ -510,3 +510,25 @@ function  get_children(&$select_cid=array(),&$all_cate=array()){
         get_children($select_cid,$all_cate);
     }
 }
+/**
+ * 获取全部分类
+ */
+function get_ngc_category($pid,&$all_category){
+    $Cate                = M('category','ngc_');
+    $where = [
+        'status'    => 0,
+        'del'       => 0,
+        'online'    => 1,
+        'pid'       => $pid
+    ];
+    $child_cate            = $Cate->where($where)->getField('cate_id,parent_id,cate_name',true);
+    if(empty($all_category)){
+        var_dump($child_cate);
+        $all_category      = $child_cate;
+    }
+    if(!empty($child_cate)){
+        foreach($child_cate as $k=>$v){
+            get_category($v['cate_id'],$v['child']);
+        }
+    }
+}

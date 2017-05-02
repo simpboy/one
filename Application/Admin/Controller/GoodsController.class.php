@@ -122,8 +122,21 @@ class GoodsController extends AdminController {
 //        $select_cate    = [];
 //        get_children($select_cate,$all_cate);
 
+        $Category = M('category','ngc_');
+        $where = [
+            'status'    => 0,
+            'del'       => 0,
+            'online'    => 1,
+            'pid'       => 0
+        ];
+        $root_category = $Category->where($where)->order("display_order desc")->select();
+        $all_category = [];
+        get_ngc_category(0,$all_category);
+        var_dump($all_category);
+
 
         $server_url     = U('Admin/Mall/upload_img');
+        $this->assign("root_category",$root_category);
         $this->assign("server_url",'http://'.SITE_DOMAIN.$server_url);
         $this->assign('info',$info);
         $this->assign('meta_title','添加商品');
