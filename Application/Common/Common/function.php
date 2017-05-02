@@ -1016,3 +1016,27 @@ function check_category_model($info){
     $array  =   explode(',', $info['pid'] ? $cate['model_sub'] : $cate['model']);
     return in_array($info['model_id'], $array);
 }
+
+
+
+/**
+ * checkstr 判断是否是字符串
+ * @autor wangxl
+ */
+function checkStr($string = ""){
+    return is_string($string)&&!empty($string);
+}
+/**
+ * @param $money string
+ * 如果是10.01 10 10.1 10.00 格式则为true
+ */
+function checkMoney($money){
+    return preg_match('/^\d+[.]?\d{0,2}$/',$money);
+}
+/**
+ * @param $int
+ * @return bool true/false
+ */
+function checkInt($int){
+    return is_numeric($int)&&(strlen($int)==strlen(intval($int)))&&($int==intval($int));
+}

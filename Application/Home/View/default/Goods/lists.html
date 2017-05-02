@@ -34,7 +34,7 @@
 			<div class="header headerElse">
 				<div class="headerBox">
 					<div class="headerIcon menu" onclick="MALL.leftMenu('.leftMenu');">&#xe68d;</div>
-					<div class="title">全部商品</div>
+					<div class="title">{$title}</div>
 					<div class="headerIcon sousuo" id="sousuo">&#xe620;</div>
 				</div>
 			</div>
@@ -112,24 +112,11 @@
 		<!-- 子菜单 -->
 		<div class="swiper-container subMenu">
 	        <div class="swiper-wrapper">
-	            <div class="swiper-slide">
-					<a href="#">子菜单1</a>
-	            </div>
-	            <div class="swiper-slide">
-					<a href="#">子菜单2</a>
-	            </div>
-	            <div class="swiper-slide">
-					<a href="#">子菜单3</a>
-	            </div>
-	            <div class="swiper-slide">
-					<a href="#">子菜单4</a>
-	            </div>
-	            <div class="swiper-slide">
-					<a href="#">子菜单5</a>
-	            </div>
-	            <div class="swiper-slide">
-					<a href="#">子菜单6</a>
-	            </div>
+				<volist name="root_category" id="category">
+					<div class="swiper-slide">
+						<a href="{:U('goods/lists',['cate_id'=>$category['cate_id']])}">{$category.cate_name}</a>
+					</div>
+				</volist>
 	        </div>
 	    </div>
 		<!-- 推荐商品 -->

@@ -14,6 +14,8 @@ namespace Home\Controller;
 class GoodsController extends HomeController {
 	//全部商品
     public function lists(){
+        $cate_id = I('cate_id',0,'intval');
+
         $Category = M('category','ngc_');
         $where = [
             'status'    => 0,
@@ -22,7 +24,6 @@ class GoodsController extends HomeController {
             'pid'       => 0
         ];
         $root_category = $Category->where($where)->order("display_order desc")->select();
-
         /**
          * CREATE TABLE `ngc_category` (
         `cate_id` int(10) NOT NULL AUTO_INCREMENT COMMENT '分类ID',
@@ -40,17 +41,37 @@ class GoodsController extends HomeController {
         PRIMARY KEY (`cate_id`)
         ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
          */
+        if(checkInt($cate_id)&&$cate_id>0){
+            $where = [
+                'cate_id'   => $cate_id,
+                'status'    => 0,
+                'del'       => 0,
+                'online'    => 1,
+            ];
+            $current_cate = $Category->where($where)->find();
+            if(empty($current_cate)){
+                $this->error('参数错误!');
+            }
+            $title        = $current_cate['cate_name'];
+        }else{
+            $title        = "全部商品";
+        }
 
         $Goods = M('goods','ngc_');
         $where = [
-            'del'   => 0,
+            'del'       => 0,
             'online'    => 1,
             'state'     => ['in',[1]],
-            'status'    => 0
+            'status'    => 0,
+
         ];
+        if(!empty($cate_id)){
+            $where['cate_id']   =  $cate_id;
+        }
         $order = "sell_number desc,update_time desc";
         $goods_list = $Goods->where($where)->order($order)->limit(30)->select();
 
+        $this->assign('title',$title);
         $this->assign('root_category',$root_category);
         $this->assign('goods_list',$goods_list);
         $this->display();

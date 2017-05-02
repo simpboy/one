@@ -118,7 +118,9 @@ class GoodsController extends AdminController {
         $info['imgs']   = json_decode($info['imgs'],true);
         $detail         = $Goods_detail->where(['goods_id'=>$goods_id])->find();
         $info           = array_merge($info,$detail);
-
+//        $all_cate       = [];
+//        $select_cate    = [];
+//        get_children($select_cate,$all_cate);
 
 
         $server_url     = U('Admin/Mall/upload_img');

@@ -472,15 +472,6 @@ function output($data="",$tag="",$debug=true,$append=true,$call_back='json_encod
     debug_output($data,$tag,$debug,$append,$call_back='json_encode',$file_path);
 }
 
-/**
- * is-string
- * @param $str
- * @return bool
- */
-function checkStr($str){
-    return is_string($str)&&!empty($str);
-}
-
 function img_to_cdn($url){
     return $url;
 }
@@ -493,4 +484,29 @@ function insert_array(&$insert,$value,$pos){
     $pos_end 		= array_slice($insert,$pos-1);
     $start_pos[] 	= $value;
     $insert 		= array_merge($start_pos,$pos_end);
+}
+/*
+ * 查询select_cid下所有子分类
+ */
+function  get_children(&$select_cid=array(),&$all_cate=array()){
+    if(count($all_cate)==0){
+        $Cate                = M('category','ngc_');
+        $all_cate            = $Cate->getField('cate_id,parent_id,cate_name',true);
+    }
+    $flag = false;
+    foreach($all_cate as $key=>$cate){
+        if(in_array($cate['parent_id'],$select_cid)){
+            if(!in_array($cate['cate_id'],$select_cid)){
+                $select_cid[] = $cate['cate_id'];
+                unset($all_cate[$cate['cate_id']]);
+                $flag = true;
+                if(count($all_cate)==0){
+                    $flag = false;
+                }
+            }
+        }
+    }
+    if($flag===true){
+        get_children($select_cid,$all_cate);
+    }
 }
